@@ -1,0 +1,11 @@
+version: "Apple Swift version 6.0.3 (swiftlang-6.0.3.1.10 clang-1600.0.30.1)"
+options: "ed19b69c122daabd18163eae29a3257dbdc36525a6b667d4c633022ddf4b0c60"
+build_start_time: [1749881327, 281891000]
+build_end_time: [1749881329, 848449000]
+inputs:
+  ? "/Users/feng/Documents/memory frame/build/memory frame.build/Release-iphoneos/memory frame.build/DerivedSources/GeneratedAssetSymbols.swift"
+  : [1749881327, 64760135]
+  "/Users/feng/Documents/memory frame/memory frame/ContentView.swift": [1749881254, 198490598]
+  "/Users/feng/Documents/memory frame/memory frame/OneView.swift": [1749881314, 135476715]
+  "/Users/feng/Documents/memory frame/memory frame/imagepicker.swift": [1749881254, 200134759]
+  "/Users/feng/Documents/memory frame/memory frame/memory_frameApp.swift": [1749799011, 704716712]

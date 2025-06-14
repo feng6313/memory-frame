@@ -1,0 +1,32 @@
+{
+  "source": "/Users/feng/Documents/memory frame/memory frame/OneView.swift",
+  "tables": {
+    "Localizable": [
+      {
+        "comment": "",
+        "key": "编辑",
+        "location": {
+          "startingColumn": 30,
+          "startingLine": 35
+        }
+      },
+      {
+        "comment": "",
+        "key": "返回",
+        "location": {
+          "startingColumn": 34,
+          "startingLine": 49
+        }
+      },
+      {
+        "comment": "",
+        "key": "保存",
+        "location": {
+          "startingColumn": 30,
+          "startingLine": 61
+        }
+      }
+    ]
+  },
+  "version": 1
+}

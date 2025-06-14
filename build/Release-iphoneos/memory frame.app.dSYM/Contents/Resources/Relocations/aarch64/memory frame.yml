@@ -1,0 +1,5 @@
+---
+triple:          'arm64-apple-darwin'
+binary-path:     '/Users/feng/Documents/memory frame/build/Release-iphoneos/memory frame.app/memory frame'
+relocations:     []
+...
