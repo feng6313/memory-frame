@@ -6,6 +6,8 @@
 //
 
 import SwiftUI
+import Photos
+import UIKit
 
 struct OneView: View {
     let selectedImage: UIImage
@@ -14,9 +16,31 @@ struct OneView: View {
     @State private var imageOffset: CGSize = .zero
     @State private var showSettingView = false
     @State private var selectedIndex: Int = 0
-    @State private var selectedColorIndex: Int = 0
     @State private var selectedIconIndex: Int = 0
     @State private var showEnterView = false
+    
+    // 每个元素独立的颜色状态
+    @State private var frameColorIndex: Int = 0      // 边框默认白色
+    @State private var textColorIndex: Int = 1       // 文字默认#1C1E22
+    @State private var timeColorIndex: Int = 4       // 时间默认#F56E00
+    @State private var locationColorIndex: Int = 1   // 地点默认#1C1E22
+    @State private var iconColorIndex: Int = 1       // 图标默认#1C1E22
+    
+    // 保存相关状态
+    @State private var showingSaveAlert = false
+    @State private var saveMessage = ""
+    
+    // 根据当前选中的按钮类型获取对应的颜色索引
+    private var currentColorIndex: Int {
+        switch selectedIndex {
+        case 0: return frameColorIndex
+        case 1: return textColorIndex
+        case 2: return timeColorIndex
+        case 3: return locationColorIndex
+        case 4: return iconColorIndex
+        default: return 0
+        }
+    }
     
     var body: some View {
         GeometryReader { geometry in
@@ -32,27 +56,41 @@ struct OneView: View {
                             screenWidth: geometry.size.width,
                             imageScale: $imageScale,
                             imageOffset: $imageOffset,
-                            showSettingView: $showSettingView
+                            showSettingView: $showSettingView,
+                            frameColorIndex: frameColorIndex,
+                            textColorIndex: textColorIndex,
+                            timeColorIndex: timeColorIndex,
+                            locationColorIndex: locationColorIndex,
+                            iconColorIndex: iconColorIndex
                         )
                         
                         // 设置按钮栏 - 距离边框4点
                         SettingButtonsBar(
                                 borderWidth: geometry.size.width - 24,
                                 selectedIndex: $selectedIndex,
-                                selectedColorIndex: $selectedColorIndex,
+                                selectedColorIndex: .constant(currentColorIndex),
                                 selectedIconIndex: $selectedIconIndex,
                                 showEnterView: $showEnterView,
                                 onSelectionChanged: { index, title in
                                     print("选择了: \(title)")
                                 },
                                 onColorChanged: { index, color in
+                                    // 根据当前选中的按钮类型更新对应的颜色索引
+                                    switch selectedIndex {
+                                    case 0: frameColorIndex = index
+                                    case 1: textColorIndex = index
+                                    case 2: timeColorIndex = index
+                                    case 3: locationColorIndex = index
+                                    case 4: iconColorIndex = index
+                                    default: break
+                                    }
                                     print("选择了颜色: \(color)")
                                 },
                                 onIconChanged: { index, icon in
                                     print("选择了图标: \(icon)")
                                 }
                             )
-                            .padding(.top, 12)
+                            .padding(.top, 20)
                         
                         Spacer()
                     }
@@ -80,8 +118,7 @@ struct OneView: View {
                 
                 ToolbarItem(placement: .navigationBarTrailing) {
                     Button(action: {
-                        // 保存逻辑
-                        dismiss()
+                        saveImageToPhotoLibrary()
                     }) {
                         Text("保存")
                             .font(.system(size: 16, weight: .regular))
@@ -102,6 +139,11 @@ struct OneView: View {
         .sheet(isPresented: $showEnterView) {
             EnterView()
         }
+        .alert("保存结果", isPresented: $showingSaveAlert) {
+            Button("确定", role: .cancel) { }
+        } message: {
+            Text(saveMessage)
+        }
     }
 }
 
@@ -111,8 +153,44 @@ struct PhotoFrameView: View {
     @Binding var imageScale: CGFloat
     @Binding var imageOffset: CGSize
     @Binding var showSettingView: Bool
+    let frameColorIndex: Int
+    let textColorIndex: Int
+    let timeColorIndex: Int
+    let locationColorIndex: Int
+    let iconColorIndex: Int
     @State private var lastDragOffset: CGSize = .zero
     @State private var initialLoadSize: CGSize = .zero
+    
+    // 颜色数组，与SettingButtonsBar保持一致
+    private let colors = [
+        "#FFFFFF", "#1C1E22", "#F4E6E7", "#F2EEE3", "#F56E00", "#CEC3B3", "#2DB471",
+        "#E5ECDB", "#C3D3DB", "#C3D3DB", "#69733E", "#834643", "#A600FF", "#255B85"
+    ]
+    
+    // 边框颜色
+    private var frameColor: Color {
+        return Color(hex: colors[frameColorIndex])
+    }
+    
+    // 文字颜色
+    private var textColor: Color {
+        return Color(hex: colors[textColorIndex])
+    }
+    
+    // 时间颜色
+    private var timeColor: Color {
+        return Color(hex: colors[timeColorIndex])
+    }
+    
+    // 地点颜色
+    private var locationColor: Color {
+        return Color(hex: colors[locationColorIndex])
+    }
+    
+    // 图标颜色
+    private var iconColor: Color {
+        return Color(hex: colors[iconColorIndex])
+    }
     
     private var frameWidth: CGFloat {
         screenWidth - 24 // 左右各留12pt边距
@@ -175,10 +253,10 @@ struct PhotoFrameView: View {
     
     var body: some View {
         VStack(spacing: 0) {
-            // 白色边框
+            // 边框
             ZStack {
                 Rectangle()
-                    .fill(Color.white)
+                    .fill(frameColor)
                     .frame(width: frameWidth, height: frameHeight)
                 
                 VStack {
@@ -274,7 +352,7 @@ struct PhotoFrameView: View {
                                     Spacer()
                                     Text(getCurrentDate())
                                         .font(.system(size: 18, weight: .regular))
-                                        .foregroundColor(Color(hex: "F56E00"))
+                                        .foregroundColor(timeColor)
                                         .padding(.trailing, 12)
                                         .padding(.bottom, 12)
                                 }
@@ -300,7 +378,7 @@ struct PhotoFrameView: View {
                                 }) {
                                     Text(formatText("我的独家记忆"))
                                         .font(.system(size: 15, weight: .medium))
-                                        .foregroundColor(Color(hex: "1C1E22"))
+                                        .foregroundColor(textColor)
                                         .multilineTextAlignment(.leading)
                                         .lineLimit(2)
                                 }
@@ -309,11 +387,13 @@ struct PhotoFrameView: View {
                                 // 地点显示
                                 HStack(spacing: 4) {
                                     Image("map_s")
+                                        .renderingMode(.template)
                                         .resizable()
                                         .frame(width: 12, height: 12)
-                                    Text("中国·北京")
+                                        .foregroundColor(iconColor)
+                                    Text("未知地点")
                                         .font(.system(size: 12, weight: .regular))
-                                        .foregroundColor(Color(hex: "1C1E22"))
+                                        .foregroundColor(locationColor)
                                 }
                             }
                             .padding(.leading, imageMargin)
@@ -358,7 +438,165 @@ struct PhotoFrameView: View {
             }
         }
     }
+    
 }
+
+// MARK: - OneView Extension
+extension OneView {
+    // 保存图片到相册
+     private func saveImageToPhotoLibrary() {
+        print("开始保存图片到相册流程")
+        
+        // 添加基本的安全检查
+        guard !selectedImage.size.equalTo(.zero) else {
+            print("错误: 选中的图片尺寸为零")
+            DispatchQueue.main.async {
+                self.saveMessage = "图片无效，无法保存"
+                self.showingSaveAlert = true
+            }
+            return
+        }
+        
+        // 检查相册访问权限 - 使用iOS 14+的新API
+        let status = PHPhotoLibrary.authorizationStatus(for: .addOnly)
+        print("当前相册权限状态: \(status.rawValue)")
+        
+        switch status {
+        case .authorized, .limited:
+            print("权限已授权，开始保存")
+            captureAndSaveImage()
+        case .denied, .restricted:
+            print("权限被拒绝或受限")
+            DispatchQueue.main.async {
+                self.saveMessage = "请在设置中允许访问相册"
+                self.showingSaveAlert = true
+            }
+        case .notDetermined:
+            print("权限未确定，请求权限")
+            PHPhotoLibrary.requestAuthorization(for: .addOnly) { newStatus in
+                print("权限请求结果: \(newStatus.rawValue)")
+                DispatchQueue.main.async {
+                    if newStatus == .authorized || newStatus == .limited {
+                        print("权限获取成功，开始保存")
+                        self.captureAndSaveImage()
+                    } else {
+                        print("权限获取失败")
+                        self.saveMessage = "需要相册访问权限才能保存图片"
+                        self.showingSaveAlert = true
+                    }
+                }
+            }
+        @unknown default:
+            print("未知权限状态")
+            DispatchQueue.main.async {
+                self.saveMessage = "权限检查失败"
+                self.showingSaveAlert = true
+            }
+        }
+    }
+    
+    // 捕获当前视图并保存
+    private func captureAndSaveImage() {
+        print("开始保存图片流程")
+        
+        // 验证图片有效性
+        guard selectedImage.size.width > 0 && selectedImage.size.height > 0 else {
+            print("图片验证失败: 尺寸无效")
+            DispatchQueue.main.async {
+                self.saveMessage = "图片无效，无法保存"
+                self.showingSaveAlert = true
+            }
+            return
+        }
+        
+        print("图片验证通过，尺寸: \(selectedImage.size)")
+        
+        // 使用SwiftUI的ImageRenderer来截取整个PhotoFrameView
+        let renderer = ImageRenderer(content: 
+            PhotoFrameView(
+                image: selectedImage,
+                screenWidth: UIScreen.main.bounds.width,
+                imageScale: .constant(imageScale),
+                imageOffset: .constant(imageOffset),
+                showSettingView: .constant(false),
+                frameColorIndex: frameColorIndex,
+                textColorIndex: textColorIndex,
+                timeColorIndex: timeColorIndex,
+                locationColorIndex: locationColorIndex,
+                iconColorIndex: iconColorIndex
+            )
+        )
+        
+        // 设置渲染尺寸
+        let frameWidth = UIScreen.main.bounds.width - 24
+        let frameHeight = frameWidth / 0.8
+        renderer.proposedSize = ProposedViewSize(width: frameWidth, height: frameHeight)
+        
+        // 渲染图片
+        guard let renderedImage = renderer.uiImage else {
+            print("视图渲染失败")
+            DispatchQueue.main.async {
+                self.saveMessage = "截图失败，无法保存"
+                self.showingSaveAlert = true
+            }
+            return
+        }
+        
+        print("视图渲染成功，尺寸: \(renderedImage.size)")
+        
+        // 检查图片大小，如果太大则压缩
+        let maxSize: CGFloat = 2048 // 最大尺寸限制
+        let imageToSave: UIImage
+        
+        if renderedImage.size.width > maxSize || renderedImage.size.height > maxSize {
+            print("图片过大，开始压缩")
+            let scale = min(maxSize / renderedImage.size.width, maxSize / renderedImage.size.height)
+            let newSize = CGSize(width: renderedImage.size.width * scale, height: renderedImage.size.height * scale)
+            
+            UIGraphicsBeginImageContextWithOptions(newSize, false, 0.0)
+            renderedImage.draw(in: CGRect(origin: .zero, size: newSize))
+            imageToSave = UIGraphicsGetImageFromCurrentImageContext() ?? renderedImage
+            UIGraphicsEndImageContext()
+            print("图片压缩完成，新尺寸: \(imageToSave.size)")
+        } else {
+            imageToSave = renderedImage
+            print("图片尺寸合适，无需压缩")
+        }
+        
+        // 保存渲染后的完整图片到相册
+        print("开始执行PHPhotoLibrary.performChanges")
+        PHPhotoLibrary.shared().performChanges({
+            print("在performChanges闭包中")
+            let request = PHAssetChangeRequest.creationRequestForAsset(from: imageToSave)
+            print("创建保存请求成功: \(request)")
+        }) { success, error in
+            print("PHPhotoLibrary.performChanges 完成回调: success=\(success), error=\(String(describing: error))")
+            
+            DispatchQueue.main.async {
+                if success {
+                    print("图片保存成功")
+                    self.saveMessage = "图片已保存到相册"
+                    self.showingSaveAlert = true
+                    // 保存成功后延迟返回上一页
+                    DispatchQueue.main.asyncAfter(deadline: .now() + 1.5) {
+                        self.dismiss()
+                    }
+                } else if let error = error {
+                    print("图片保存失败: \(error)")
+                    self.saveMessage = "保存失败: \(error.localizedDescription)"
+                    self.showingSaveAlert = true
+                } else {
+                    print("图片保存失败: 未知错误")
+                    self.saveMessage = "保存失败: 未知错误"
+                    self.showingSaveAlert = true
+                }
+            }
+        }
+        print("PHPhotoLibrary.performChanges 调用完成")
+    }
+}
+
+
 
 #Preview {
     OneView(selectedImage: UIImage(systemName: "photo") ?? UIImage())
