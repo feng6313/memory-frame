@@ -527,10 +527,13 @@ extension OneView {
             )
         )
         
-        // 设置渲染尺寸
-        let frameWidth = UIScreen.main.bounds.width - 24
-        let frameHeight = frameWidth / 0.8
-        renderer.proposedSize = ProposedViewSize(width: frameWidth, height: frameHeight)
+        // 设置渲染尺寸 - 使用高分辨率输出
+        let exportWidth: CGFloat = 1464
+        let exportHeight = exportWidth / 0.8  // 保持0.8:1的宽高比
+        renderer.proposedSize = ProposedViewSize(width: exportWidth, height: exportHeight)
+        
+        // 设置高分辨率渲染
+        renderer.scale = 5.0
         
         // 渲染图片
         guard let renderedImage = renderer.uiImage else {
