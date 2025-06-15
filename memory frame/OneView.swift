@@ -14,10 +14,11 @@ struct OneView: View {
     @Environment(\.dismiss) private var dismiss
     @State private var imageScale: CGFloat = 1.0
     @State private var imageOffset: CGSize = .zero
-    @State private var showSettingView = false
+
     @State private var selectedIndex: Int = 0
     @State private var selectedIconIndex: Int = 0
     @State private var showEnterView = false
+    @State private var memoryText = "我的独家记忆"
     
     // 每个元素独立的颜色状态
     @State private var frameColorIndex: Int = 0      // 边框默认白色
@@ -56,7 +57,8 @@ struct OneView: View {
                             screenWidth: geometry.size.width,
                             imageScale: $imageScale,
                             imageOffset: $imageOffset,
-                            showSettingView: $showSettingView,
+                            showEnterView: $showEnterView,
+                            memoryText: $memoryText,
                             frameColorIndex: frameColorIndex,
                             textColorIndex: textColorIndex,
                             timeColorIndex: timeColorIndex,
@@ -133,11 +135,9 @@ struct OneView: View {
             }
         }
         .navigationViewStyle(StackNavigationViewStyle())
-        .sheet(isPresented: $showSettingView) {
-            SettingView()
-        }
+
         .sheet(isPresented: $showEnterView) {
-            EnterView()
+            EnterView(memoryText: $memoryText)
         }
         .alert("保存结果", isPresented: $showingSaveAlert) {
             Button("确定", role: .cancel) { }
@@ -152,7 +152,9 @@ struct PhotoFrameView: View {
     let screenWidth: CGFloat
     @Binding var imageScale: CGFloat
     @Binding var imageOffset: CGSize
-    @Binding var showSettingView: Bool
+
+    @Binding var showEnterView: Bool
+    @Binding var memoryText: String
     let frameColorIndex: Int
     let textColorIndex: Int
     let timeColorIndex: Int
@@ -373,16 +375,11 @@ struct PhotoFrameView: View {
                         HStack {
                             VStack(alignment: .leading, spacing: 4) {
                                 // 文字显示
-                                Button(action: {
-                                    showSettingView = true
-                                }) {
-                                    Text(formatText("我的独家记忆"))
-                                        .font(.system(size: 15, weight: .medium))
-                                        .foregroundColor(textColor)
-                                        .multilineTextAlignment(.leading)
-                                        .lineLimit(2)
-                                }
-                                .buttonStyle(PlainButtonStyle())
+                                Text(formatText(memoryText))
+                                    .font(.system(size: 15, weight: .medium))
+                                    .foregroundColor(textColor)
+                                    .multilineTextAlignment(.leading)
+                                    .lineLimit(2)
                                 
                                 // 地点显示
                                 HStack(spacing: 4) {
@@ -518,7 +515,8 @@ extension OneView {
                 screenWidth: UIScreen.main.bounds.width,
                 imageScale: .constant(imageScale),
                 imageOffset: .constant(imageOffset),
-                showSettingView: .constant(false),
+                showEnterView: .constant(false),
+                memoryText: .constant(memoryText),
                 frameColorIndex: frameColorIndex,
                 textColorIndex: textColorIndex,
                 timeColorIndex: timeColorIndex,

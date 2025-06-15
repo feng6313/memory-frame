@@ -62,7 +62,7 @@ struct SettingButtonsBar: View {
                         .buttonStyle(PlainButtonStyle())
                     }
                 }
-                .frame(width: borderWidth - 24, height: 32) // 左右各12点边距
+                .frame(width: borderWidth - 12, height: 32) // 左右各6点边距
                 .background(
                     RoundedRectangle(cornerRadius: 10)
                         .fill(Color(hex: "2C2C2E"))
