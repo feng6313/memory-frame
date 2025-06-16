@@ -1,15 +1,15 @@
 //
-//  OneView.swift
+//  TwoView.swift
 //  memory frame
 //
-//  Created by feng on 2025/6/13.
+//  Created by feng on 2025/6/16.
 //
 
 import SwiftUI
 import UIKit
 import Photos
 
-struct OneView: View {
+struct TwoView: View {
     let selectedImage: UIImage
     @Environment(\.dismiss) private var dismiss
     @State private var imageScale: CGFloat = 1.0
@@ -52,7 +52,7 @@ struct OneView: View {
                     
                     VStack(spacing: 0) {
                         // 照片边框
-                        PhotoFrameView(
+                        PhotoFrameViewTwo(
                             image: selectedImage,
                             screenWidth: geometry.size.width,
                             imageScale: $imageScale,
@@ -147,7 +147,7 @@ struct OneView: View {
     }
 }
 
-struct PhotoFrameView: View {
+struct PhotoFrameViewTwo: View {
     let image: UIImage
     let screenWidth: CGFloat
     @Binding var imageScale: CGFloat
@@ -204,37 +204,46 @@ struct PhotoFrameView: View {
         frameWidth / 0.8 // 保持0.8:1比例
     }
     
-    private var imageDisplaySize: CGFloat {
+    // TwoView特有：图片显示区域高度为背景高度的0.5
+    private var imageDisplayHeight: CGFloat {
+        frameHeight * 0.5
+    }
+    
+    private var imageDisplayWidth: CGFloat {
         frameWidth * 0.92 // 边框宽度减去上下左右各0.04×边框宽度的边距
     }
     
     // 计算初始缩放比例，确保图片完全显示在显示区域内
     private var initialScale: CGFloat {
         let imageSize = image.size
-        let scaleX = imageDisplaySize / imageSize.width
-        let scaleY = imageDisplaySize / imageSize.height
+        let scaleX = imageDisplayWidth / imageSize.width
+        let scaleY = imageDisplayHeight / imageSize.height
         return min(scaleX, scaleY)
     }
     
-    private var imageMargin: CGFloat {
+    private var horizontalMargin: CGFloat {
         frameWidth * 0.04
     }
     
+    private var verticalMargin: CGFloat {
+        frameHeight * 0.25
+    }
+    
     // 限制图片偏移量，确保不超出显示区域
-    private func limitOffset(_ offset: CGSize, scale: CGFloat, displaySize: CGFloat) -> CGSize {
+    private func limitOffset(_ offset: CGSize, scale: CGFloat, displayWidth: CGFloat, displayHeight: CGFloat) -> CGSize {
         // 获取图片的原始尺寸
         let imageSize = image.size
         
         // 计算图片在显示区域内的实际显示尺寸
         let aspectRatio = imageSize.width / imageSize.height
-        let scaledWidth = displaySize * scale
-        let scaledHeight = displaySize * scale
+        let scaledWidth = displayWidth * scale
+        let scaledHeight = displayHeight * scale
         
         // 计算实际的图片显示尺寸（考虑aspectRatio: .fill）
         let actualImageWidth: CGFloat
         let actualImageHeight: CGFloat
         
-        if aspectRatio > 1 {
+        if aspectRatio > displayWidth / displayHeight {
             // 宽图片：高度填满显示区域，宽度按比例缩放
             actualImageHeight = scaledHeight
             actualImageWidth = actualImageHeight * aspectRatio
@@ -245,8 +254,8 @@ struct PhotoFrameView: View {
         }
         
         // 计算最大允许的偏移量
-        let maxOffsetX = max(0, (actualImageWidth - displaySize) / 2)
-        let maxOffsetY = max(0, (actualImageHeight - displaySize) / 2)
+        let maxOffsetX = max(0, (actualImageWidth - displayWidth) / 2)
+        let maxOffsetY = max(0, (actualImageHeight - displayHeight) / 2)
         
         // 限制偏移量在允许范围内
         let limitedX = max(-maxOffsetX, min(maxOffsetX, offset.width))
@@ -270,7 +279,7 @@ struct PhotoFrameView: View {
                             // 显示区域背景
                             Rectangle()
                                 .fill(Color.gray.opacity(0.1))
-                                .frame(width: imageDisplaySize, height: imageDisplaySize)
+                                .frame(width: imageDisplayWidth, height: imageDisplayHeight)
                             
                             // 图片容器 - 限制图片在此区域内
                             ZStack {
@@ -294,7 +303,7 @@ struct PhotoFrameView: View {
                                                         height: lastDragOffset.height + value.translation.height
                                                     )
                                                     withAnimation(.easeOut(duration: 0.3)) {
-                                                        imageOffset = limitOffset(newOffset, scale: imageScale, displaySize: imageDisplaySize)
+                                                        imageOffset = limitOffset(newOffset, scale: imageScale, displayWidth: imageDisplayWidth, displayHeight: imageDisplayHeight)
                                                         lastDragOffset = imageOffset
                                                     }
                                                 },
@@ -306,13 +315,13 @@ struct PhotoFrameView: View {
                                     // 计算当前缩放下的图片实际尺寸
                                     let imageSize = image.size
                                     let aspectRatio = imageSize.width / imageSize.height
-                                    let scaledWidth = imageDisplaySize * newScale
-                                    let scaledHeight = imageDisplaySize * newScale
+                                    let scaledWidth = imageDisplayWidth * newScale
+                                    let scaledHeight = imageDisplayHeight * newScale
                                     
                                     let currentImageWidth: CGFloat
                                     let currentImageHeight: CGFloat
                                     
-                                    if aspectRatio > 1 {
+                                    if aspectRatio > imageDisplayWidth / imageDisplayHeight {
                                         currentImageHeight = scaledHeight
                                         currentImageWidth = currentImageHeight * aspectRatio
                                     } else {
@@ -325,7 +334,7 @@ struct PhotoFrameView: View {
                                         imageScale = min(3.0, newScale)
                                     }
                                     
-                                    imageOffset = limitOffset(imageOffset, scale: imageScale, displaySize: imageDisplaySize)
+                                    imageOffset = limitOffset(imageOffset, scale: imageScale, displayWidth: imageDisplayWidth, displayHeight: imageDisplayHeight)
                                 }
                                                 .onEnded { value in
                                                     // 更新基准缩放值
@@ -334,24 +343,24 @@ struct PhotoFrameView: View {
                                         )
                                     )
                             }
-                            .frame(width: imageDisplaySize, height: imageDisplaySize)
+                            .frame(width: imageDisplayWidth, height: imageDisplayHeight)
                             .clipShape(Rectangle())
                             .onAppear {
                                 // 记录图片初次加载时的实际显示尺寸
                                 let imageSize = image.size
                                 let aspectRatio = imageSize.width / imageSize.height
                                 
-                                if aspectRatio > 1 {
+                                if aspectRatio > imageDisplayWidth / imageDisplayHeight {
                                     // 宽图片：高度填满显示区域，宽度按比例缩放
                                     initialLoadSize = CGSize(
-                                        width: imageDisplaySize * aspectRatio,
-                                        height: imageDisplaySize
+                                        width: imageDisplayHeight * aspectRatio,
+                                        height: imageDisplayHeight
                                     )
                                 } else {
                                     // 高图片或正方形：宽度填满显示区域，高度按比例缩放
                                     initialLoadSize = CGSize(
-                                        width: imageDisplaySize,
-                                        height: imageDisplaySize / aspectRatio
+                                        width: imageDisplayWidth,
+                                        height: imageDisplayWidth / aspectRatio
                                     )
                                 }
                             }
@@ -371,12 +380,12 @@ struct PhotoFrameView: View {
                                 }
                             }
                         }
-                        .frame(width: imageDisplaySize, height: imageDisplaySize)
+                        .frame(width: imageDisplayWidth, height: imageDisplayHeight)
                         
                         Spacer()
                     }
-                    .padding(.leading, imageMargin)
-                    .padding(.top, imageMargin)
+                    .padding(.leading, horizontalMargin)
+                    .padding(.top, verticalMargin)
                     
                     // 图片下方的空白区域，上下居中显示文字和地点
                     VStack {
@@ -406,7 +415,7 @@ struct PhotoFrameView: View {
                                     }
                                 }
                             }
-                            .padding(.leading, imageMargin)
+                            .padding(.leading, horizontalMargin)
                             
                             Spacer()
                         }
@@ -418,8 +427,6 @@ struct PhotoFrameView: View {
             .frame(width: frameWidth, height: frameHeight)
         }
     }
-    
-
     
     // 格式化文字，确保第一行最多15字，第二行最多10字
     private func formatText(_ text: String) -> String {
@@ -443,11 +450,10 @@ struct PhotoFrameView: View {
             }
         }
     }
-    
 }
 
-// MARK: - OneView Extension
-extension OneView {
+// MARK: - TwoView Extension
+extension TwoView {
     // 保存图片到相册
     private func saveImageToPhotoLibrary() {
         print("开始保存图片到相册流程")
@@ -455,8 +461,8 @@ extension OneView {
         // 获取屏幕宽度
         let currentScreenWidth = UIScreen.main.bounds.width
         
-        // 使用ImageExporter保存图片
-        ImageExporter.savePhotoFrame(
+        // 使用ImageExporter保存图片（TwoView专用方法）
+        ImageExporter.savePhotoFrameTwo(
             image: selectedImage,
             screenWidth: currentScreenWidth,
             imageScale: imageScale,
@@ -482,8 +488,8 @@ extension OneView {
     }
 }
 
-
-
 #Preview {
-    OneView(selectedImage: UIImage(systemName: "photo") ?? UIImage())
+    if let image = UIImage(systemName: "photo") {
+        TwoView(selectedImage: image)
+    }
 }

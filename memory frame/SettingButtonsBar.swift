@@ -139,7 +139,7 @@ struct SettingButtonsBar: View {
                     HStack(spacing: calculateMoreIconSpacing()) {
                         moreIconButton(iconName: "date")
                         moreIconButton(iconName: "map_b")
-                        moreIconButton(iconName: "user")
+                        // moreIconButton(iconName: "user") // 暂时注销，以后用的时候再加上
                     }
                     
                     Spacer()
