@@ -1,0 +1,40 @@
+{
+  "source": "/Users/feng/Documents/memory frame/memory frame/DmuView.swift",
+  "tables": {
+    "Localizable": [
+      {
+        "comment": "",
+        "key": "更多",
+        "location": {
+          "startingColumn": 30,
+          "startingLine": 33
+        }
+      },
+      {
+        "comment": "",
+        "key": "更多功能",
+        "location": {
+          "startingColumn": 26,
+          "startingLine": 22
+        }
+      },
+      {
+        "comment": "",
+        "key": "此页面待开发",
+        "location": {
+          "startingColumn": 26,
+          "startingLine": 26
+        }
+      },
+      {
+        "comment": "",
+        "key": "返回",
+        "location": {
+          "startingColumn": 34,
+          "startingLine": 47
+        }
+      }
+    ]
+  },
+  "version": 1
+}

@@ -5,7 +5,78 @@
 	<key>colors</key>
 	<array/>
 	<key>images</key>
-	<array/>
+	<array>
+		<dict>
+			<key>catalogPath</key>
+			<string>/Users/feng/Documents/memory frame/memory frame/Assets.xcassets</string>
+			<key>objcSymbol</key>
+			<string>ACImageNameColor</string>
+			<key>relativePath</key>
+			<string>./color.imageset</string>
+			<key>swiftSymbol</key>
+			<string>color</string>
+		</dict>
+		<dict>
+			<key>catalogPath</key>
+			<string>/Users/feng/Documents/memory frame/memory frame/Assets.xcassets</string>
+			<key>objcSymbol</key>
+			<string>ACImageNameDate</string>
+			<key>relativePath</key>
+			<string>./date.imageset</string>
+			<key>swiftSymbol</key>
+			<string>date</string>
+		</dict>
+		<dict>
+			<key>catalogPath</key>
+			<string>/Users/feng/Documents/memory frame/memory frame/Assets.xcassets</string>
+			<key>objcSymbol</key>
+			<string>ACImageNameMapB</string>
+			<key>relativePath</key>
+			<string>./map_b.imageset</string>
+			<key>swiftSymbol</key>
+			<string>mapB</string>
+		</dict>
+		<dict>
+			<key>catalogPath</key>
+			<string>/Users/feng/Documents/memory frame/memory frame/Assets.xcassets</string>
+			<key>objcSymbol</key>
+			<string>ACImageNameMapS</string>
+			<key>relativePath</key>
+			<string>./map_s.imageset</string>
+			<key>swiftSymbol</key>
+			<string>mapS</string>
+		</dict>
+		<dict>
+			<key>catalogPath</key>
+			<string>/Users/feng/Documents/memory frame/memory frame/Assets.xcassets</string>
+			<key>objcSymbol</key>
+			<string>ACImageNameMore</string>
+			<key>relativePath</key>
+			<string>./more.imageset</string>
+			<key>swiftSymbol</key>
+			<string>more</string>
+		</dict>
+		<dict>
+			<key>catalogPath</key>
+			<string>/Users/feng/Documents/memory frame/memory frame/Assets.xcassets</string>
+			<key>objcSymbol</key>
+			<string>ACImageNameUser</string>
+			<key>relativePath</key>
+			<string>./user.imageset</string>
+			<key>swiftSymbol</key>
+			<string>user</string>
+		</dict>
+		<dict>
+			<key>catalogPath</key>
+			<string>/Users/feng/Documents/memory frame/memory frame/Assets.xcassets</string>
+			<key>objcSymbol</key>
+			<string>ACImageNameWord</string>
+			<key>relativePath</key>
+			<string>./word.imageset</string>
+			<key>swiftSymbol</key>
+			<string>word</string>
+		</dict>
+	</array>
 	<key>symbols</key>
 	<array/>
 </dict>

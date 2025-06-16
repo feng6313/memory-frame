@@ -1,11 +1,15 @@
 version: "Apple Swift version 6.0.3 (swiftlang-6.0.3.1.10 clang-1600.0.30.1)"
 options: "ed19b69c122daabd18163eae29a3257dbdc36525a6b667d4c633022ddf4b0c60"
-build_start_time: [1749881327, 281891000]
-build_end_time: [1749881329, 848449000]
+build_start_time: [1750037216, 370593000]
+build_end_time: [1750037220, 799869000]
 inputs:
   ? "/Users/feng/Documents/memory frame/build/memory frame.build/Release-iphoneos/memory frame.build/DerivedSources/GeneratedAssetSymbols.swift"
-  : [1749881327, 64760135]
-  "/Users/feng/Documents/memory frame/memory frame/ContentView.swift": [1749881254, 198490598]
-  "/Users/feng/Documents/memory frame/memory frame/OneView.swift": [1749881314, 135476715]
-  "/Users/feng/Documents/memory frame/memory frame/imagepicker.swift": [1749881254, 200134759]
+  : [1750037099, 262918042]
+  "/Users/feng/Documents/memory frame/memory frame/ContentView.swift": [1749978725, 798793028]
+  "/Users/feng/Documents/memory frame/memory frame/DmuView.swift": [1749978725, 813270845]
+  "/Users/feng/Documents/memory frame/memory frame/EnterView.swift": [1749979053, 276431994]
+  "/Users/feng/Documents/memory frame/memory frame/ImageExporter.swift": [1750036681, 848921518]
+  "/Users/feng/Documents/memory frame/memory frame/OneView.swift": [1750037203, 702981981]
+  "/Users/feng/Documents/memory frame/memory frame/SettingButtonsBar.swift": [1749979091, 211017459]
+  "/Users/feng/Documents/memory frame/memory frame/imagepicker.swift": [1749978725, 813402095]
   "/Users/feng/Documents/memory frame/memory frame/memory_frameApp.swift": [1749799011, 704716712]

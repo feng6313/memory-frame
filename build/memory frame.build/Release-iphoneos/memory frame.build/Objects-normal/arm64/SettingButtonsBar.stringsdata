@@ -1,0 +1,16 @@
+{
+  "source": "/Users/feng/Documents/memory frame/memory frame/SettingButtonsBar.swift",
+  "tables": {
+    "Localizable": [
+      {
+        "comment": "",
+        "key": "+点击添加回忆内容",
+        "location": {
+          "startingColumn": 30,
+          "startingLine": 121
+        }
+      }
+    ]
+  },
+  "version": 1
+}

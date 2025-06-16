@@ -4,10 +4,18 @@
     "Localizable": [
       {
         "comment": "",
+        "key": "保存结果",
+        "location": {
+          "startingColumn": 16,
+          "startingLine": 142
+        }
+      },
+      {
+        "comment": "",
         "key": "编辑",
         "location": {
           "startingColumn": 30,
-          "startingLine": 35
+          "startingLine": 100
         }
       },
       {
@@ -15,7 +23,7 @@
         "key": "返回",
         "location": {
           "startingColumn": 34,
-          "startingLine": 49
+          "startingLine": 114
         }
       },
       {
@@ -23,7 +31,23 @@
         "key": "保存",
         "location": {
           "startingColumn": 30,
-          "startingLine": 61
+          "startingLine": 125
+        }
+      },
+      {
+        "comment": "",
+        "key": "确定",
+        "location": {
+          "startingColumn": 20,
+          "startingLine": 143
+        }
+      },
+      {
+        "comment": "",
+        "key": "未知地点",
+        "location": {
+          "startingColumn": 42,
+          "startingLine": 391
         }
       }
     ]
