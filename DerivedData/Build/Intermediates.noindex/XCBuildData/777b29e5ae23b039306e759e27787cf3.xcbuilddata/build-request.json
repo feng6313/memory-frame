@@ -1,0 +1,75 @@
+{
+  "buildCommand" : {
+    "command" : "build",
+    "skipDependencies" : false,
+    "style" : "buildOnly"
+  },
+  "configuredTargets" : [
+    {
+      "guid" : "48d84ea26b6536b6c5d6aef02b3827c2431950e03aa7e621a96d51ff5969e76c"
+    }
+  ],
+  "containerPath" : "/Users/feng/Documents/memory frame/memory frame.xcodeproj",
+  "continueBuildingAfterErrors" : false,
+  "dependencyScope" : "workspace",
+  "enableIndexBuildArena" : false,
+  "hideShellScriptEnvironment" : false,
+  "parameters" : {
+    "action" : "build",
+    "activeArchitecture" : "arm64",
+    "activeRunDestination" : {
+      "disableOnlyActiveArch" : false,
+      "platform" : "iphonesimulator",
+      "sdk" : "iphonesimulator18.2",
+      "sdkVariant" : "iphonesimulator",
+      "supportedArchitectures" : [
+        "arm64",
+        "x86_64"
+      ],
+      "targetArchitecture" : "arm64"
+    },
+    "arenaInfo" : {
+      "buildIntermediatesPath" : "/Users/feng/Documents/memory frame/DerivedData/Build/Intermediates.noindex",
+      "buildProductsPath" : "/Users/feng/Documents/memory frame/DerivedData/Build/Products",
+      "derivedDataPath" : "/Users/feng/Documents/memory frame/DerivedData",
+      "indexDataStoreFolderPath" : "/Users/feng/Documents/memory frame/DerivedData/Index.noindex/DataStore",
+      "indexEnableDataStore" : true,
+      "indexPCHPath" : "/Users/feng/Documents/memory frame/DerivedData/Index.noindex/PrecompiledHeaders",
+      "pchPath" : "/Users/feng/Documents/memory frame/DerivedData/Build/Intermediates.noindex/PrecompiledHeaders"
+    },
+    "configurationName" : "Debug",
+    "overrides" : {
+      "commandLine" : {
+        "table" : {
+
+        }
+      },
+      "synthesized" : {
+        "table" : {
+          "ACTION" : "build",
+          "ASSETCATALOG_FILTER_FOR_DEVICE_MODEL" : "iPhone17,1",
+          "ASSETCATALOG_FILTER_FOR_DEVICE_OS_VERSION" : "18.2",
+          "ASSETCATALOG_FILTER_FOR_THINNING_DEVICE_CONFIGURATION" : "iPhone17,1",
+          "BUILD_ACTIVE_RESOURCES_ONLY" : "YES",
+          "CLANG_COVERAGE_MAPPING" : "YES",
+          "CLANG_PROFILE_DATA_DIRECTORY" : "/Users/feng/Documents/memory frame/DerivedData/Build/ProfileData",
+          "COLOR_DIAGNOSTICS" : "YES",
+          "diagnostic_message_length" : "121",
+          "ENABLE_PREVIEWS" : "NO",
+          "ENABLE_XOJIT_PREVIEWS" : "YES",
+          "ONLY_ACTIVE_ARCH" : "YES",
+          "TARGET_DEVICE_IDENTIFIER" : "4833ED49-F373-47F9-9CE0-E6143FF513C3",
+          "TARGET_DEVICE_MODEL" : "iPhone17,1",
+          "TARGET_DEVICE_OS_VERSION" : "18.2",
+          "TARGET_DEVICE_PLATFORM_NAME" : "iphonesimulator"
+        }
+      }
+    }
+  },
+  "schemeCommand" : "launch",
+  "showNonLoggedProgress" : true,
+  "useDryRun" : false,
+  "useImplicitDependencies" : true,
+  "useLegacyBuildLocations" : false,
+  "useParallelTargets" : true
+}

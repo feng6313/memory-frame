@@ -39,6 +39,8 @@ struct ContentView: View {
     @State private var selectedImage: UIImage?
     @State private var showingOneView = false
     @State private var showingTwoView = false
+    @State private var showingThreeView = false
+    @State private var showingFourView = false
     @State private var selectedItem: PhotosPickerItem?
     @State private var showingPhotoPicker = false
     @State private var selectedFrameIndex: Int = 0
@@ -58,7 +60,7 @@ struct ContentView: View {
                         GridItem(.flexible(), spacing: 24),
                         GridItem(.flexible(), spacing: 24)
                     ], spacing: 24) {
-                        ForEach(0..<2, id: \.self) { index in
+                        ForEach(0..<4, id: \.self) { index in
                             FrameItemView(
                                 index: index, 
                                 frameSize: calculateFrameSize(screenWidth: geometry.size.width)
@@ -100,6 +102,10 @@ struct ContentView: View {
                                     showingOneView = true
                                 } else if selectedFrameIndex == 1 {
                                     showingTwoView = true
+                                } else if selectedFrameIndex == 2 {
+                                    showingThreeView = true
+                                } else if selectedFrameIndex == 3 {
+                                    showingFourView = true
                                 } else {
                                     showingOneView = true // 其他索引默认进入OneView
                                 }
@@ -117,6 +123,16 @@ struct ContentView: View {
         .fullScreenCover(isPresented: $showingTwoView) {
             if let image = selectedImage {
                 TwoView(selectedImage: image)
+            }
+        }
+        .fullScreenCover(isPresented: $showingThreeView) {
+            if let image = selectedImage {
+                ThreeView(selectedImage: image)
+            }
+        }
+        .fullScreenCover(isPresented: $showingFourView) {
+            if let image = selectedImage {
+                FourView(selectedImage: image)
             }
         }
     }
@@ -137,6 +153,20 @@ struct FrameItemView: View {
                 }
         } else if index == 1 {
             Image("two")
+                .resizable()
+                .frame(width: frameSize.width, height: frameSize.height)
+                .onTapGesture {
+                    onTap()
+                }
+        } else if index == 2 {
+            Image("three")
+                .resizable()
+                .frame(width: frameSize.width, height: frameSize.height)
+                .onTapGesture {
+                    onTap()
+                }
+        } else if index == 3 {
+            Image("four")
                 .resizable()
                 .frame(width: frameSize.width, height: frameSize.height)
                 .onTapGesture {

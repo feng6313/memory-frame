@@ -1,0 +1,16 @@
+{
+  "source": "/Users/feng/Documents/memory frame/memory frame/ContentView.swift",
+  "tables": {
+    "Localizable": [
+      {
+        "comment": "",
+        "key": "选择相框",
+        "location": {
+          "startingColumn": 34,
+          "startingLine": 75
+        }
+      }
+    ]
+  },
+  "version": 1
+}

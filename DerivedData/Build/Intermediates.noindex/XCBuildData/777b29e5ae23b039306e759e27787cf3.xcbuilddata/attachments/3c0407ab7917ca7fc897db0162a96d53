@@ -1,0 +1,108 @@
+{
+  "" : {
+    "diagnostics" : "/Users/feng/Documents/memory frame/DerivedData/Build/Intermediates.noindex/memory frame.build/Debug-iphonesimulator/memory frame.build/Objects-normal/arm64/memory frame-master.dia",
+    "emit-module-dependencies" : "/Users/feng/Documents/memory frame/DerivedData/Build/Intermediates.noindex/memory frame.build/Debug-iphonesimulator/memory frame.build/Objects-normal/arm64/memory frame-master-emit-module.d",
+    "emit-module-diagnostics" : "/Users/feng/Documents/memory frame/DerivedData/Build/Intermediates.noindex/memory frame.build/Debug-iphonesimulator/memory frame.build/Objects-normal/arm64/memory frame-master-emit-module.dia",
+    "swift-dependencies" : "/Users/feng/Documents/memory frame/DerivedData/Build/Intermediates.noindex/memory frame.build/Debug-iphonesimulator/memory frame.build/Objects-normal/arm64/memory frame-master.swiftdeps"
+  },
+  "/Users/feng/Documents/memory frame/DerivedData/Build/Intermediates.noindex/memory frame.build/Debug-iphonesimulator/memory frame.build/DerivedSources/GeneratedAssetSymbols.swift" : {
+    "const-values" : "/Users/feng/Documents/memory frame/DerivedData/Build/Intermediates.noindex/memory frame.build/Debug-iphonesimulator/memory frame.build/Objects-normal/arm64/GeneratedAssetSymbols.swiftconstvalues",
+    "dependencies" : "/Users/feng/Documents/memory frame/DerivedData/Build/Intermediates.noindex/memory frame.build/Debug-iphonesimulator/memory frame.build/Objects-normal/arm64/GeneratedAssetSymbols.d",
+    "diagnostics" : "/Users/feng/Documents/memory frame/DerivedData/Build/Intermediates.noindex/memory frame.build/Debug-iphonesimulator/memory frame.build/Objects-normal/arm64/GeneratedAssetSymbols.dia",
+    "index-unit-output-path" : "/memory frame.build/Debug-iphonesimulator/memory frame.build/Objects-normal/arm64/GeneratedAssetSymbols.o",
+    "llvm-bc" : "/Users/feng/Documents/memory frame/DerivedData/Build/Intermediates.noindex/memory frame.build/Debug-iphonesimulator/memory frame.build/Objects-normal/arm64/GeneratedAssetSymbols.bc",
+    "object" : "/Users/feng/Documents/memory frame/DerivedData/Build/Intermediates.noindex/memory frame.build/Debug-iphonesimulator/memory frame.build/Objects-normal/arm64/GeneratedAssetSymbols.o",
+    "swift-dependencies" : "/Users/feng/Documents/memory frame/DerivedData/Build/Intermediates.noindex/memory frame.build/Debug-iphonesimulator/memory frame.build/Objects-normal/arm64/GeneratedAssetSymbols.swiftdeps",
+    "swiftmodule" : "/Users/feng/Documents/memory frame/DerivedData/Build/Intermediates.noindex/memory frame.build/Debug-iphonesimulator/memory frame.build/Objects-normal/arm64/GeneratedAssetSymbols~partial.swiftmodule"
+  },
+  "/Users/feng/Documents/memory frame/memory frame/ContentView.swift" : {
+    "const-values" : "/Users/feng/Documents/memory frame/DerivedData/Build/Intermediates.noindex/memory frame.build/Debug-iphonesimulator/memory frame.build/Objects-normal/arm64/ContentView.swiftconstvalues",
+    "dependencies" : "/Users/feng/Documents/memory frame/DerivedData/Build/Intermediates.noindex/memory frame.build/Debug-iphonesimulator/memory frame.build/Objects-normal/arm64/ContentView.d",
+    "diagnostics" : "/Users/feng/Documents/memory frame/DerivedData/Build/Intermediates.noindex/memory frame.build/Debug-iphonesimulator/memory frame.build/Objects-normal/arm64/ContentView.dia",
+    "index-unit-output-path" : "/memory frame.build/Debug-iphonesimulator/memory frame.build/Objects-normal/arm64/ContentView.o",
+    "llvm-bc" : "/Users/feng/Documents/memory frame/DerivedData/Build/Intermediates.noindex/memory frame.build/Debug-iphonesimulator/memory frame.build/Objects-normal/arm64/ContentView.bc",
+    "object" : "/Users/feng/Documents/memory frame/DerivedData/Build/Intermediates.noindex/memory frame.build/Debug-iphonesimulator/memory frame.build/Objects-normal/arm64/ContentView.o",
+    "swift-dependencies" : "/Users/feng/Documents/memory frame/DerivedData/Build/Intermediates.noindex/memory frame.build/Debug-iphonesimulator/memory frame.build/Objects-normal/arm64/ContentView.swiftdeps",
+    "swiftmodule" : "/Users/feng/Documents/memory frame/DerivedData/Build/Intermediates.noindex/memory frame.build/Debug-iphonesimulator/memory frame.build/Objects-normal/arm64/ContentView~partial.swiftmodule"
+  },
+  "/Users/feng/Documents/memory frame/memory frame/DmuView.swift" : {
+    "const-values" : "/Users/feng/Documents/memory frame/DerivedData/Build/Intermediates.noindex/memory frame.build/Debug-iphonesimulator/memory frame.build/Objects-normal/arm64/DmuView.swiftconstvalues",
+    "dependencies" : "/Users/feng/Documents/memory frame/DerivedData/Build/Intermediates.noindex/memory frame.build/Debug-iphonesimulator/memory frame.build/Objects-normal/arm64/DmuView.d",
+    "diagnostics" : "/Users/feng/Documents/memory frame/DerivedData/Build/Intermediates.noindex/memory frame.build/Debug-iphonesimulator/memory frame.build/Objects-normal/arm64/DmuView.dia",
+    "index-unit-output-path" : "/memory frame.build/Debug-iphonesimulator/memory frame.build/Objects-normal/arm64/DmuView.o",
+    "llvm-bc" : "/Users/feng/Documents/memory frame/DerivedData/Build/Intermediates.noindex/memory frame.build/Debug-iphonesimulator/memory frame.build/Objects-normal/arm64/DmuView.bc",
+    "object" : "/Users/feng/Documents/memory frame/DerivedData/Build/Intermediates.noindex/memory frame.build/Debug-iphonesimulator/memory frame.build/Objects-normal/arm64/DmuView.o",
+    "swift-dependencies" : "/Users/feng/Documents/memory frame/DerivedData/Build/Intermediates.noindex/memory frame.build/Debug-iphonesimulator/memory frame.build/Objects-normal/arm64/DmuView.swiftdeps",
+    "swiftmodule" : "/Users/feng/Documents/memory frame/DerivedData/Build/Intermediates.noindex/memory frame.build/Debug-iphonesimulator/memory frame.build/Objects-normal/arm64/DmuView~partial.swiftmodule"
+  },
+  "/Users/feng/Documents/memory frame/memory frame/EnterView.swift" : {
+    "const-values" : "/Users/feng/Documents/memory frame/DerivedData/Build/Intermediates.noindex/memory frame.build/Debug-iphonesimulator/memory frame.build/Objects-normal/arm64/EnterView.swiftconstvalues",
+    "dependencies" : "/Users/feng/Documents/memory frame/DerivedData/Build/Intermediates.noindex/memory frame.build/Debug-iphonesimulator/memory frame.build/Objects-normal/arm64/EnterView.d",
+    "diagnostics" : "/Users/feng/Documents/memory frame/DerivedData/Build/Intermediates.noindex/memory frame.build/Debug-iphonesimulator/memory frame.build/Objects-normal/arm64/EnterView.dia",
+    "index-unit-output-path" : "/memory frame.build/Debug-iphonesimulator/memory frame.build/Objects-normal/arm64/EnterView.o",
+    "llvm-bc" : "/Users/feng/Documents/memory frame/DerivedData/Build/Intermediates.noindex/memory frame.build/Debug-iphonesimulator/memory frame.build/Objects-normal/arm64/EnterView.bc",
+    "object" : "/Users/feng/Documents/memory frame/DerivedData/Build/Intermediates.noindex/memory frame.build/Debug-iphonesimulator/memory frame.build/Objects-normal/arm64/EnterView.o",
+    "swift-dependencies" : "/Users/feng/Documents/memory frame/DerivedData/Build/Intermediates.noindex/memory frame.build/Debug-iphonesimulator/memory frame.build/Objects-normal/arm64/EnterView.swiftdeps",
+    "swiftmodule" : "/Users/feng/Documents/memory frame/DerivedData/Build/Intermediates.noindex/memory frame.build/Debug-iphonesimulator/memory frame.build/Objects-normal/arm64/EnterView~partial.swiftmodule"
+  },
+  "/Users/feng/Documents/memory frame/memory frame/ImageExporter.swift" : {
+    "const-values" : "/Users/feng/Documents/memory frame/DerivedData/Build/Intermediates.noindex/memory frame.build/Debug-iphonesimulator/memory frame.build/Objects-normal/arm64/ImageExporter.swiftconstvalues",
+    "dependencies" : "/Users/feng/Documents/memory frame/DerivedData/Build/Intermediates.noindex/memory frame.build/Debug-iphonesimulator/memory frame.build/Objects-normal/arm64/ImageExporter.d",
+    "diagnostics" : "/Users/feng/Documents/memory frame/DerivedData/Build/Intermediates.noindex/memory frame.build/Debug-iphonesimulator/memory frame.build/Objects-normal/arm64/ImageExporter.dia",
+    "index-unit-output-path" : "/memory frame.build/Debug-iphonesimulator/memory frame.build/Objects-normal/arm64/ImageExporter.o",
+    "llvm-bc" : "/Users/feng/Documents/memory frame/DerivedData/Build/Intermediates.noindex/memory frame.build/Debug-iphonesimulator/memory frame.build/Objects-normal/arm64/ImageExporter.bc",
+    "object" : "/Users/feng/Documents/memory frame/DerivedData/Build/Intermediates.noindex/memory frame.build/Debug-iphonesimulator/memory frame.build/Objects-normal/arm64/ImageExporter.o",
+    "swift-dependencies" : "/Users/feng/Documents/memory frame/DerivedData/Build/Intermediates.noindex/memory frame.build/Debug-iphonesimulator/memory frame.build/Objects-normal/arm64/ImageExporter.swiftdeps",
+    "swiftmodule" : "/Users/feng/Documents/memory frame/DerivedData/Build/Intermediates.noindex/memory frame.build/Debug-iphonesimulator/memory frame.build/Objects-normal/arm64/ImageExporter~partial.swiftmodule"
+  },
+  "/Users/feng/Documents/memory frame/memory frame/OneView.swift" : {
+    "const-values" : "/Users/feng/Documents/memory frame/DerivedData/Build/Intermediates.noindex/memory frame.build/Debug-iphonesimulator/memory frame.build/Objects-normal/arm64/OneView.swiftconstvalues",
+    "dependencies" : "/Users/feng/Documents/memory frame/DerivedData/Build/Intermediates.noindex/memory frame.build/Debug-iphonesimulator/memory frame.build/Objects-normal/arm64/OneView.d",
+    "diagnostics" : "/Users/feng/Documents/memory frame/DerivedData/Build/Intermediates.noindex/memory frame.build/Debug-iphonesimulator/memory frame.build/Objects-normal/arm64/OneView.dia",
+    "index-unit-output-path" : "/memory frame.build/Debug-iphonesimulator/memory frame.build/Objects-normal/arm64/OneView.o",
+    "llvm-bc" : "/Users/feng/Documents/memory frame/DerivedData/Build/Intermediates.noindex/memory frame.build/Debug-iphonesimulator/memory frame.build/Objects-normal/arm64/OneView.bc",
+    "object" : "/Users/feng/Documents/memory frame/DerivedData/Build/Intermediates.noindex/memory frame.build/Debug-iphonesimulator/memory frame.build/Objects-normal/arm64/OneView.o",
+    "swift-dependencies" : "/Users/feng/Documents/memory frame/DerivedData/Build/Intermediates.noindex/memory frame.build/Debug-iphonesimulator/memory frame.build/Objects-normal/arm64/OneView.swiftdeps",
+    "swiftmodule" : "/Users/feng/Documents/memory frame/DerivedData/Build/Intermediates.noindex/memory frame.build/Debug-iphonesimulator/memory frame.build/Objects-normal/arm64/OneView~partial.swiftmodule"
+  },
+  "/Users/feng/Documents/memory frame/memory frame/SettingButtonsBar.swift" : {
+    "const-values" : "/Users/feng/Documents/memory frame/DerivedData/Build/Intermediates.noindex/memory frame.build/Debug-iphonesimulator/memory frame.build/Objects-normal/arm64/SettingButtonsBar.swiftconstvalues",
+    "dependencies" : "/Users/feng/Documents/memory frame/DerivedData/Build/Intermediates.noindex/memory frame.build/Debug-iphonesimulator/memory frame.build/Objects-normal/arm64/SettingButtonsBar.d",
+    "diagnostics" : "/Users/feng/Documents/memory frame/DerivedData/Build/Intermediates.noindex/memory frame.build/Debug-iphonesimulator/memory frame.build/Objects-normal/arm64/SettingButtonsBar.dia",
+    "index-unit-output-path" : "/memory frame.build/Debug-iphonesimulator/memory frame.build/Objects-normal/arm64/SettingButtonsBar.o",
+    "llvm-bc" : "/Users/feng/Documents/memory frame/DerivedData/Build/Intermediates.noindex/memory frame.build/Debug-iphonesimulator/memory frame.build/Objects-normal/arm64/SettingButtonsBar.bc",
+    "object" : "/Users/feng/Documents/memory frame/DerivedData/Build/Intermediates.noindex/memory frame.build/Debug-iphonesimulator/memory frame.build/Objects-normal/arm64/SettingButtonsBar.o",
+    "swift-dependencies" : "/Users/feng/Documents/memory frame/DerivedData/Build/Intermediates.noindex/memory frame.build/Debug-iphonesimulator/memory frame.build/Objects-normal/arm64/SettingButtonsBar.swiftdeps",
+    "swiftmodule" : "/Users/feng/Documents/memory frame/DerivedData/Build/Intermediates.noindex/memory frame.build/Debug-iphonesimulator/memory frame.build/Objects-normal/arm64/SettingButtonsBar~partial.swiftmodule"
+  },
+  "/Users/feng/Documents/memory frame/memory frame/TwoView.swift" : {
+    "const-values" : "/Users/feng/Documents/memory frame/DerivedData/Build/Intermediates.noindex/memory frame.build/Debug-iphonesimulator/memory frame.build/Objects-normal/arm64/TwoView.swiftconstvalues",
+    "dependencies" : "/Users/feng/Documents/memory frame/DerivedData/Build/Intermediates.noindex/memory frame.build/Debug-iphonesimulator/memory frame.build/Objects-normal/arm64/TwoView.d",
+    "diagnostics" : "/Users/feng/Documents/memory frame/DerivedData/Build/Intermediates.noindex/memory frame.build/Debug-iphonesimulator/memory frame.build/Objects-normal/arm64/TwoView.dia",
+    "index-unit-output-path" : "/memory frame.build/Debug-iphonesimulator/memory frame.build/Objects-normal/arm64/TwoView.o",
+    "llvm-bc" : "/Users/feng/Documents/memory frame/DerivedData/Build/Intermediates.noindex/memory frame.build/Debug-iphonesimulator/memory frame.build/Objects-normal/arm64/TwoView.bc",
+    "object" : "/Users/feng/Documents/memory frame/DerivedData/Build/Intermediates.noindex/memory frame.build/Debug-iphonesimulator/memory frame.build/Objects-normal/arm64/TwoView.o",
+    "swift-dependencies" : "/Users/feng/Documents/memory frame/DerivedData/Build/Intermediates.noindex/memory frame.build/Debug-iphonesimulator/memory frame.build/Objects-normal/arm64/TwoView.swiftdeps",
+    "swiftmodule" : "/Users/feng/Documents/memory frame/DerivedData/Build/Intermediates.noindex/memory frame.build/Debug-iphonesimulator/memory frame.build/Objects-normal/arm64/TwoView~partial.swiftmodule"
+  },
+  "/Users/feng/Documents/memory frame/memory frame/imagepicker.swift" : {
+    "const-values" : "/Users/feng/Documents/memory frame/DerivedData/Build/Intermediates.noindex/memory frame.build/Debug-iphonesimulator/memory frame.build/Objects-normal/arm64/imagepicker.swiftconstvalues",
+    "dependencies" : "/Users/feng/Documents/memory frame/DerivedData/Build/Intermediates.noindex/memory frame.build/Debug-iphonesimulator/memory frame.build/Objects-normal/arm64/imagepicker.d",
+    "diagnostics" : "/Users/feng/Documents/memory frame/DerivedData/Build/Intermediates.noindex/memory frame.build/Debug-iphonesimulator/memory frame.build/Objects-normal/arm64/imagepicker.dia",
+    "index-unit-output-path" : "/memory frame.build/Debug-iphonesimulator/memory frame.build/Objects-normal/arm64/imagepicker.o",
+    "llvm-bc" : "/Users/feng/Documents/memory frame/DerivedData/Build/Intermediates.noindex/memory frame.build/Debug-iphonesimulator/memory frame.build/Objects-normal/arm64/imagepicker.bc",
+    "object" : "/Users/feng/Documents/memory frame/DerivedData/Build/Intermediates.noindex/memory frame.build/Debug-iphonesimulator/memory frame.build/Objects-normal/arm64/imagepicker.o",
+    "swift-dependencies" : "/Users/feng/Documents/memory frame/DerivedData/Build/Intermediates.noindex/memory frame.build/Debug-iphonesimulator/memory frame.build/Objects-normal/arm64/imagepicker.swiftdeps",
+    "swiftmodule" : "/Users/feng/Documents/memory frame/DerivedData/Build/Intermediates.noindex/memory frame.build/Debug-iphonesimulator/memory frame.build/Objects-normal/arm64/imagepicker~partial.swiftmodule"
+  },
+  "/Users/feng/Documents/memory frame/memory frame/memory_frameApp.swift" : {
+    "const-values" : "/Users/feng/Documents/memory frame/DerivedData/Build/Intermediates.noindex/memory frame.build/Debug-iphonesimulator/memory frame.build/Objects-normal/arm64/memory_frameApp.swiftconstvalues",
+    "dependencies" : "/Users/feng/Documents/memory frame/DerivedData/Build/Intermediates.noindex/memory frame.build/Debug-iphonesimulator/memory frame.build/Objects-normal/arm64/memory_frameApp.d",
+    "diagnostics" : "/Users/feng/Documents/memory frame/DerivedData/Build/Intermediates.noindex/memory frame.build/Debug-iphonesimulator/memory frame.build/Objects-normal/arm64/memory_frameApp.dia",
+    "index-unit-output-path" : "/memory frame.build/Debug-iphonesimulator/memory frame.build/Objects-normal/arm64/memory_frameApp.o",
+    "llvm-bc" : "/Users/feng/Documents/memory frame/DerivedData/Build/Intermediates.noindex/memory frame.build/Debug-iphonesimulator/memory frame.build/Objects-normal/arm64/memory_frameApp.bc",
+    "object" : "/Users/feng/Documents/memory frame/DerivedData/Build/Intermediates.noindex/memory frame.build/Debug-iphonesimulator/memory frame.build/Objects-normal/arm64/memory_frameApp.o",
+    "swift-dependencies" : "/Users/feng/Documents/memory frame/DerivedData/Build/Intermediates.noindex/memory frame.build/Debug-iphonesimulator/memory frame.build/Objects-normal/arm64/memory_frameApp.swiftdeps",
+    "swiftmodule" : "/Users/feng/Documents/memory frame/DerivedData/Build/Intermediates.noindex/memory frame.build/Debug-iphonesimulator/memory frame.build/Objects-normal/arm64/memory_frameApp~partial.swiftmodule"
+  }
+}

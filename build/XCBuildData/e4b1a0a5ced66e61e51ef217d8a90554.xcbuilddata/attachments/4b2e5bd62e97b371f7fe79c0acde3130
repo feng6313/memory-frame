@@ -1,0 +1,55 @@
+{
+  "" : {
+    "const-values" : "/Users/feng/Documents/memory frame/build/memory frame.build/Release-iphoneos/memory frame.build/Objects-normal/arm64/memory frame-master.swiftconstvalues",
+    "dependencies" : "/Users/feng/Documents/memory frame/build/memory frame.build/Release-iphoneos/memory frame.build/Objects-normal/arm64/memory frame-master.d",
+    "diagnostics" : "/Users/feng/Documents/memory frame/build/memory frame.build/Release-iphoneos/memory frame.build/Objects-normal/arm64/memory frame-master.dia",
+    "emit-module-dependencies" : "/Users/feng/Documents/memory frame/build/memory frame.build/Release-iphoneos/memory frame.build/Objects-normal/arm64/memory frame-master-emit-module.d",
+    "emit-module-diagnostics" : "/Users/feng/Documents/memory frame/build/memory frame.build/Release-iphoneos/memory frame.build/Objects-normal/arm64/memory frame-master-emit-module.dia",
+    "swift-dependencies" : "/Users/feng/Documents/memory frame/build/memory frame.build/Release-iphoneos/memory frame.build/Objects-normal/arm64/memory frame-master.swiftdeps"
+  },
+  "/Users/feng/Documents/memory frame/build/memory frame.build/Release-iphoneos/memory frame.build/DerivedSources/GeneratedAssetSymbols.swift" : {
+    "index-unit-output-path" : "/memory frame.build/Release-iphoneos/memory frame.build/Objects-normal/arm64/GeneratedAssetSymbols.o",
+    "llvm-bc" : "/Users/feng/Documents/memory frame/build/memory frame.build/Release-iphoneos/memory frame.build/Objects-normal/arm64/GeneratedAssetSymbols.bc",
+    "object" : "/Users/feng/Documents/memory frame/build/memory frame.build/Release-iphoneos/memory frame.build/Objects-normal/arm64/GeneratedAssetSymbols.o"
+  },
+  "/Users/feng/Documents/memory frame/memory frame/ContentView.swift" : {
+    "index-unit-output-path" : "/memory frame.build/Release-iphoneos/memory frame.build/Objects-normal/arm64/ContentView.o",
+    "llvm-bc" : "/Users/feng/Documents/memory frame/build/memory frame.build/Release-iphoneos/memory frame.build/Objects-normal/arm64/ContentView.bc",
+    "object" : "/Users/feng/Documents/memory frame/build/memory frame.build/Release-iphoneos/memory frame.build/Objects-normal/arm64/ContentView.o"
+  },
+  "/Users/feng/Documents/memory frame/memory frame/DmuView.swift" : {
+    "index-unit-output-path" : "/memory frame.build/Release-iphoneos/memory frame.build/Objects-normal/arm64/DmuView.o",
+    "llvm-bc" : "/Users/feng/Documents/memory frame/build/memory frame.build/Release-iphoneos/memory frame.build/Objects-normal/arm64/DmuView.bc",
+    "object" : "/Users/feng/Documents/memory frame/build/memory frame.build/Release-iphoneos/memory frame.build/Objects-normal/arm64/DmuView.o"
+  },
+  "/Users/feng/Documents/memory frame/memory frame/EnterView.swift" : {
+    "index-unit-output-path" : "/memory frame.build/Release-iphoneos/memory frame.build/Objects-normal/arm64/EnterView.o",
+    "llvm-bc" : "/Users/feng/Documents/memory frame/build/memory frame.build/Release-iphoneos/memory frame.build/Objects-normal/arm64/EnterView.bc",
+    "object" : "/Users/feng/Documents/memory frame/build/memory frame.build/Release-iphoneos/memory frame.build/Objects-normal/arm64/EnterView.o"
+  },
+  "/Users/feng/Documents/memory frame/memory frame/ImageExporter.swift" : {
+    "index-unit-output-path" : "/memory frame.build/Release-iphoneos/memory frame.build/Objects-normal/arm64/ImageExporter.o",
+    "llvm-bc" : "/Users/feng/Documents/memory frame/build/memory frame.build/Release-iphoneos/memory frame.build/Objects-normal/arm64/ImageExporter.bc",
+    "object" : "/Users/feng/Documents/memory frame/build/memory frame.build/Release-iphoneos/memory frame.build/Objects-normal/arm64/ImageExporter.o"
+  },
+  "/Users/feng/Documents/memory frame/memory frame/OneView.swift" : {
+    "index-unit-output-path" : "/memory frame.build/Release-iphoneos/memory frame.build/Objects-normal/arm64/OneView.o",
+    "llvm-bc" : "/Users/feng/Documents/memory frame/build/memory frame.build/Release-iphoneos/memory frame.build/Objects-normal/arm64/OneView.bc",
+    "object" : "/Users/feng/Documents/memory frame/build/memory frame.build/Release-iphoneos/memory frame.build/Objects-normal/arm64/OneView.o"
+  },
+  "/Users/feng/Documents/memory frame/memory frame/SettingButtonsBar.swift" : {
+    "index-unit-output-path" : "/memory frame.build/Release-iphoneos/memory frame.build/Objects-normal/arm64/SettingButtonsBar.o",
+    "llvm-bc" : "/Users/feng/Documents/memory frame/build/memory frame.build/Release-iphoneos/memory frame.build/Objects-normal/arm64/SettingButtonsBar.bc",
+    "object" : "/Users/feng/Documents/memory frame/build/memory frame.build/Release-iphoneos/memory frame.build/Objects-normal/arm64/SettingButtonsBar.o"
+  },
+  "/Users/feng/Documents/memory frame/memory frame/imagepicker.swift" : {
+    "index-unit-output-path" : "/memory frame.build/Release-iphoneos/memory frame.build/Objects-normal/arm64/imagepicker.o",
+    "llvm-bc" : "/Users/feng/Documents/memory frame/build/memory frame.build/Release-iphoneos/memory frame.build/Objects-normal/arm64/imagepicker.bc",
+    "object" : "/Users/feng/Documents/memory frame/build/memory frame.build/Release-iphoneos/memory frame.build/Objects-normal/arm64/imagepicker.o"
+  },
+  "/Users/feng/Documents/memory frame/memory frame/memory_frameApp.swift" : {
+    "index-unit-output-path" : "/memory frame.build/Release-iphoneos/memory frame.build/Objects-normal/arm64/memory_frameApp.o",
+    "llvm-bc" : "/Users/feng/Documents/memory frame/build/memory frame.build/Release-iphoneos/memory frame.build/Objects-normal/arm64/memory_frameApp.bc",
+    "object" : "/Users/feng/Documents/memory frame/build/memory frame.build/Release-iphoneos/memory frame.build/Objects-normal/arm64/memory_frameApp.o"
+  }
+}

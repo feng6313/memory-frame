@@ -4,34 +4,122 @@
     "Localizable": [
       {
         "comment": "",
-        "key": "更多",
+        "key": "更多设置",
         "location": {
           "startingColumn": 30,
-          "startingLine": 33
+          "startingLine": 229
         }
       },
       {
         "comment": "",
-        "key": "更多功能",
-        "location": {
-          "startingColumn": 26,
-          "startingLine": 22
-        }
-      },
-      {
-        "comment": "",
-        "key": "此页面待开发",
-        "location": {
-          "startingColumn": 26,
-          "startingLine": 26
-        }
-      },
-      {
-        "comment": "",
-        "key": "返回",
+        "key": "日期设置",
         "location": {
           "startingColumn": 34,
-          "startingLine": 47
+          "startingLine": 57
+        }
+      },
+      {
+        "comment": "",
+        "key": "",
+        "location": {
+          "startingColumn": 37,
+          "startingLine": 66
+        }
+      },
+      {
+        "comment": "",
+        "key": "不显示日期",
+        "location": {
+          "startingColumn": 42,
+          "startingLine": 82
+        }
+      },
+      {
+        "comment": "",
+        "key": "",
+        "location": {
+          "startingColumn": 44,
+          "startingLine": 88
+        }
+      },
+      {
+        "comment": "",
+        "key": "地理位置设置",
+        "location": {
+          "startingColumn": 34,
+          "startingLine": 110
+        }
+      },
+      {
+        "comment": "",
+        "key": "输入国家/省（8字以内）",
+        "location": {
+          "startingColumn": 43,
+          "startingLine": 119
+        }
+      },
+      {
+        "comment": "",
+        "key": "输入省/市（8字以内）",
+        "location": {
+          "startingColumn": 43,
+          "startingLine": 153
+        }
+      },
+      {
+        "comment": "",
+        "key": "输入国家/省（8字以内）",
+        "location": {
+          "startingColumn": 50,
+          "startingLine": 134
+        }
+      },
+      {
+        "comment": "",
+        "key": "输入省/市（8字以内）",
+        "location": {
+          "startingColumn": 50,
+          "startingLine": 168
+        }
+      },
+      {
+        "comment": "",
+        "key": "不显示位置",
+        "location": {
+          "startingColumn": 42,
+          "startingLine": 188
+        }
+      },
+      {
+        "comment": "",
+        "key": "",
+        "location": {
+          "startingColumn": 44,
+          "startingLine": 194
+        }
+      },
+      {
+        "comment": "",
+        "key": "示例：中国·北京、河南·洛阳、我的·记忆",
+        "location": {
+          "startingColumn": 38,
+          "startingLine": 213
+        }
+      },
+      {
+        "comment": "",
+        "key": "取消",
+        "location": {
+          "startingColumn": 30,
+          "startingLine": 240
+        }
+      },
+      {
+        "comment": "",
+        "key": "保存",
+        "location": {
+          "startingColumn": 30,
+          "startingLine": 250
         }
       }
     ]

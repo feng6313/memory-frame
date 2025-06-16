@@ -288,4 +288,116 @@ extension ImageExporter {
         // 保存到相册
         saveToPhotoLibrary(content: photoFrameViewTwo, completion: completion)
     }
+    
+    /// 保存PhotoFrameViewThree到相册的便捷方法（ThreeView专用）
+    /// - Parameters:
+    ///   - image: 原始图片
+    ///   - screenWidth: 屏幕宽度
+    ///   - imageScale: 图片缩放比例
+    ///   - imageOffset: 图片偏移量
+    ///   - memoryText: 回忆文字
+    ///   - frameColorIndex: 边框颜色索引
+    ///   - textColorIndex: 文字颜色索引
+    ///   - timeColorIndex: 时间颜色索引
+    ///   - locationColorIndex: 地点颜色索引
+    ///   - iconColorIndex: 图标颜色索引
+    ///   - completion: 完成回调
+    static func savePhotoFrameThree(
+        image: UIImage,
+        screenWidth: CGFloat,
+        imageScale: CGFloat,
+        imageOffset: CGSize,
+        memoryText: String,
+        frameColorIndex: Int,
+        textColorIndex: Int,
+        timeColorIndex: Int,
+        locationColorIndex: Int,
+        iconColorIndex: Int,
+        completion: @escaping SaveCompletion
+    ) {
+        // 验证图片有效性
+        guard image.size.width > 0 && image.size.height > 0 else {
+            print("图片验证失败: 尺寸无效")
+            DispatchQueue.main.async {
+                completion(false, "图片无效，无法保存")
+            }
+            return
+        }
+        
+        print("图片验证通过，尺寸: \(image.size)")
+        
+        // 创建PhotoFrameViewThree
+        let photoFrameViewThree = PhotoFrameViewThree(
+            image: image,
+            screenWidth: screenWidth,
+            imageScale: .constant(imageScale),
+            imageOffset: .constant(imageOffset),
+            showEnterView: .constant(false),
+            memoryText: .constant(memoryText),
+            frameColorIndex: frameColorIndex,
+            textColorIndex: textColorIndex,
+            timeColorIndex: timeColorIndex,
+            locationColorIndex: locationColorIndex,
+            iconColorIndex: iconColorIndex
+        )
+        
+        // 保存到相册
+        saveToPhotoLibrary(content: photoFrameViewThree, completion: completion)
+    }
+    
+    /// 保存PhotoFrameViewFour到相册的便捷方法（FourView专用）
+    /// - Parameters:
+    ///   - image: 原始图片
+    ///   - screenWidth: 屏幕宽度
+    ///   - imageScale: 图片缩放比例
+    ///   - imageOffset: 图片偏移量
+    ///   - memoryText: 回忆文字
+    ///   - frameColorIndex: 边框颜色索引
+    ///   - textColorIndex: 文字颜色索引
+    ///   - timeColorIndex: 时间颜色索引
+    ///   - locationColorIndex: 地点颜色索引
+    ///   - iconColorIndex: 图标颜色索引
+    ///   - completion: 完成回调
+    static func savePhotoFrameFour(
+        image: UIImage,
+        screenWidth: CGFloat,
+        imageScale: CGFloat,
+        imageOffset: CGSize,
+        memoryText: String,
+        frameColorIndex: Int,
+        textColorIndex: Int,
+        timeColorIndex: Int,
+        locationColorIndex: Int,
+        iconColorIndex: Int,
+        completion: @escaping SaveCompletion
+    ) {
+        // 验证图片有效性
+        guard image.size.width > 0 && image.size.height > 0 else {
+            print("图片验证失败: 尺寸无效")
+            DispatchQueue.main.async {
+                completion(false, "图片无效，无法保存")
+            }
+            return
+        }
+        
+        print("图片验证通过，尺寸: \(image.size)")
+        
+        // 创建PhotoFrameViewFour
+        let photoFrameViewFour = PhotoFrameViewFour(
+            image: image,
+            screenWidth: screenWidth,
+            imageScale: .constant(imageScale),
+            imageOffset: .constant(imageOffset),
+            showEnterView: .constant(false),
+            memoryText: .constant(memoryText),
+            frameColorIndex: frameColorIndex,
+            textColorIndex: textColorIndex,
+            timeColorIndex: timeColorIndex,
+            locationColorIndex: locationColorIndex,
+            iconColorIndex: iconColorIndex
+        )
+        
+        // 保存到相册
+        saveToPhotoLibrary(content: photoFrameViewFour, completion: completion)
+    }
 }

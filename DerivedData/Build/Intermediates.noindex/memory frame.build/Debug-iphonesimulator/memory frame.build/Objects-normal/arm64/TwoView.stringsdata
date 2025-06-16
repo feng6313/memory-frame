@@ -1,0 +1,48 @@
+{
+  "source": "/Users/feng/Documents/memory frame/memory frame/TwoView.swift",
+  "tables": {
+    "Localizable": [
+      {
+        "comment": "",
+        "key": "保存结果",
+        "location": {
+          "startingColumn": 16,
+          "startingLine": 142
+        }
+      },
+      {
+        "comment": "",
+        "key": "编辑",
+        "location": {
+          "startingColumn": 30,
+          "startingLine": 100
+        }
+      },
+      {
+        "comment": "",
+        "key": "返回",
+        "location": {
+          "startingColumn": 34,
+          "startingLine": 114
+        }
+      },
+      {
+        "comment": "",
+        "key": "保存",
+        "location": {
+          "startingColumn": 30,
+          "startingLine": 125
+        }
+      },
+      {
+        "comment": "",
+        "key": "确定",
+        "location": {
+          "startingColumn": 20,
+          "startingLine": 143
+        }
+      }
+    ]
+  },
+  "version": 1
+}
