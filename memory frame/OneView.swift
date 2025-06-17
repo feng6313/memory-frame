@@ -168,7 +168,7 @@ struct PhotoFrameView: View {
     // 颜色数组，与SettingButtonsBar保持一致
     private let colors = [
         "#FFFFFF", "#1C1E22", "#F4E6E7", "#F2EEE3", "#F56E00", "#CEC3B3", "#2DB471",
-        "#E5ECDB", "#C3D3DB", "#C3D3DB", "#69733E", "#834643", "#A600FF", "#255B85"
+        "#E5ECDB", "#C3D3DB", "#A98069", "#69733E", "#834643", "#A600FF", "#255B85"
     ]
     
     // 边框颜色

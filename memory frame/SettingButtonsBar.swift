@@ -22,7 +22,7 @@ struct SettingButtonsBar: View {
     private let buttonTitles = ["边框", "文字", "时间", "地点", "图标"]
     private let colors = [
         "#FFFFFF", "#1C1E22", "#F4E6E7", "#F2EEE3", "#F56E00", "#CEC3B3", "#2DB471",
-        "#E5ECDB", "#C3D3DB", "#C3D3DB", "#69733E", "#834643", "#A600FF", "#255B85"
+        "#E5ECDB", "#C3D3DB", "#A98069", "#69733E", "#834643", "#A600FF", "#255B85"
     ]
     
     init(borderWidth: CGFloat, selectedIndex: Binding<Int>, selectedColorIndex: Binding<Int>, selectedIconIndex: Binding<Int>, showEnterView: Binding<Bool>, onSelectionChanged: ((Int, String) -> Void)? = nil, onColorChanged: ((Int, String) -> Void)? = nil, onIconChanged: ((Int, String) -> Void)? = nil) {
