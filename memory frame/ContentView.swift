@@ -43,6 +43,8 @@ struct ContentView: View {
     @State private var showingFourView = false
     @State private var showingFiveView = false
     @State private var showingSixView = false
+    @State private var showingSevenView = false
+    @State private var showingEightView = false
     @State private var selectedItem: PhotosPickerItem?
     @State private var showingPhotoPicker = false
     @State private var selectedFrameIndex: Int = 0
@@ -63,7 +65,7 @@ struct ContentView: View {
                         GridItem(.flexible(), spacing: 24),
                         GridItem(.flexible(), spacing: 24)
                     ], spacing: 24) {
-                        ForEach(0..<6, id: \.self) { index in
+                        ForEach(0..<8, id: \.self) { index in
                             FrameItemView(
                                 index: index, 
                                 frameSize: calculateFrameSize(screenWidth: geometry.size.width)
@@ -113,6 +115,10 @@ struct ContentView: View {
                                     showingFiveView = true
                                 } else if selectedFrameIndex == 5 {
                                     showingSixView = true
+                                } else if selectedFrameIndex == 6 {
+                                    showingSevenView = true
+                                } else if selectedFrameIndex == 7 {
+                                    showingEightView = true
                                 } else {
                                     showingOneView = true // 其他索引默认进入OneView
                                 }
@@ -150,6 +156,16 @@ struct ContentView: View {
         .fullScreenCover(isPresented: $showingSixView) {
             if let image = selectedImage {
                 SixView(selectedImage: image)
+            }
+        }
+        .fullScreenCover(isPresented: $showingSevenView) {
+            if let image = selectedImage {
+                SevenView(selectedImage: image)
+            }
+        }
+        .fullScreenCover(isPresented: $showingEightView) {
+            if let image = selectedImage {
+                EightView(selectedImage: image)
             }
         }
     }
@@ -198,6 +214,20 @@ struct FrameItemView: View {
                 }
         } else if index == 5 {
             Image("six")
+                .resizable()
+                .frame(width: frameSize.width, height: frameSize.height)
+                .onTapGesture {
+                    onTap()
+                }
+        } else if index == 6 {
+            Image("seven")
+                .resizable()
+                .frame(width: frameSize.width, height: frameSize.height)
+                .onTapGesture {
+                    onTap()
+                }
+        } else if index == 7 {
+            Image("eight")
                 .resizable()
                 .frame(width: frameSize.width, height: frameSize.height)
                 .onTapGesture {

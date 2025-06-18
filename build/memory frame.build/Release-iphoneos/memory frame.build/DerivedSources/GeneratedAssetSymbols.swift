@@ -31,11 +31,29 @@ extension DeveloperToolsSupport.ColorResource {
 @available(iOS 17.0, macOS 14.0, tvOS 17.0, watchOS 10.0, *)
 extension DeveloperToolsSupport.ImageResource {
 
+    /// The "collect" asset catalog image resource.
+    static let collect = DeveloperToolsSupport.ImageResource(name: "collect", bundle: resourceBundle)
+
     /// The "color" asset catalog image resource.
     static let color = DeveloperToolsSupport.ImageResource(name: "color", bundle: resourceBundle)
 
+    /// The "comment" asset catalog image resource.
+    static let comment = DeveloperToolsSupport.ImageResource(name: "comment", bundle: resourceBundle)
+
     /// The "date" asset catalog image resource.
     static let date = DeveloperToolsSupport.ImageResource(name: "date", bundle: resourceBundle)
+
+    /// The "eight" asset catalog image resource.
+    static let eight = DeveloperToolsSupport.ImageResource(name: "eight", bundle: resourceBundle)
+
+    /// The "five" asset catalog image resource.
+    static let five = DeveloperToolsSupport.ImageResource(name: "five", bundle: resourceBundle)
+
+    /// The "four" asset catalog image resource.
+    static let four = DeveloperToolsSupport.ImageResource(name: "four", bundle: resourceBundle)
+
+    /// The "heart" asset catalog image resource.
+    static let heart = DeveloperToolsSupport.ImageResource(name: "heart", bundle: resourceBundle)
 
     /// The "map_b" asset catalog image resource.
     static let mapB = DeveloperToolsSupport.ImageResource(name: "map_b", bundle: resourceBundle)
@@ -46,8 +64,35 @@ extension DeveloperToolsSupport.ImageResource {
     /// The "more" asset catalog image resource.
     static let more = DeveloperToolsSupport.ImageResource(name: "more", bundle: resourceBundle)
 
+    /// The "one" asset catalog image resource.
+    static let one = DeveloperToolsSupport.ImageResource(name: "one", bundle: resourceBundle)
+
+    /// The "seven" asset catalog image resource.
+    static let seven = DeveloperToolsSupport.ImageResource(name: "seven", bundle: resourceBundle)
+
+    /// The "share" asset catalog image resource.
+    static let share = DeveloperToolsSupport.ImageResource(name: "share", bundle: resourceBundle)
+
+    /// The "six" asset catalog image resource.
+    static let six = DeveloperToolsSupport.ImageResource(name: "six", bundle: resourceBundle)
+
+    /// The "three" asset catalog image resource.
+    static let three = DeveloperToolsSupport.ImageResource(name: "three", bundle: resourceBundle)
+
+    /// The "three points" asset catalog image resource.
+    static let threePoints = DeveloperToolsSupport.ImageResource(name: "three points", bundle: resourceBundle)
+
+    /// The "two" asset catalog image resource.
+    static let two = DeveloperToolsSupport.ImageResource(name: "two", bundle: resourceBundle)
+
     /// The "user" asset catalog image resource.
     static let user = DeveloperToolsSupport.ImageResource(name: "user", bundle: resourceBundle)
+
+    /// The "user_s" asset catalog image resource.
+    static let userS = DeveloperToolsSupport.ImageResource(name: "user_s", bundle: resourceBundle)
+
+    /// The "user_ss" asset catalog image resource.
+    static let userSs = DeveloperToolsSupport.ImageResource(name: "user_ss", bundle: resourceBundle)
 
     /// The "word" asset catalog image resource.
     static let word = DeveloperToolsSupport.ImageResource(name: "word", bundle: resourceBundle)
@@ -91,6 +136,15 @@ extension SwiftUI.ShapeStyle where Self == SwiftUI.Color {
 @available(macCatalyst, unavailable)
 extension AppKit.NSImage {
 
+    /// The "collect" asset catalog image.
+    static var collect: AppKit.NSImage {
+#if !targetEnvironment(macCatalyst)
+        .init(resource: .collect)
+#else
+        .init()
+#endif
+    }
+
     /// The "color" asset catalog image.
     static var color: AppKit.NSImage {
 #if !targetEnvironment(macCatalyst)
@@ -100,10 +154,55 @@ extension AppKit.NSImage {
 #endif
     }
 
+    /// The "comment" asset catalog image.
+    static var comment: AppKit.NSImage {
+#if !targetEnvironment(macCatalyst)
+        .init(resource: .comment)
+#else
+        .init()
+#endif
+    }
+
     /// The "date" asset catalog image.
     static var date: AppKit.NSImage {
 #if !targetEnvironment(macCatalyst)
         .init(resource: .date)
+#else
+        .init()
+#endif
+    }
+
+    /// The "eight" asset catalog image.
+    static var eight: AppKit.NSImage {
+#if !targetEnvironment(macCatalyst)
+        .init(resource: .eight)
+#else
+        .init()
+#endif
+    }
+
+    /// The "five" asset catalog image.
+    static var five: AppKit.NSImage {
+#if !targetEnvironment(macCatalyst)
+        .init(resource: .five)
+#else
+        .init()
+#endif
+    }
+
+    /// The "four" asset catalog image.
+    static var four: AppKit.NSImage {
+#if !targetEnvironment(macCatalyst)
+        .init(resource: .four)
+#else
+        .init()
+#endif
+    }
+
+    /// The "heart" asset catalog image.
+    static var heart: AppKit.NSImage {
+#if !targetEnvironment(macCatalyst)
+        .init(resource: .heart)
 #else
         .init()
 #endif
@@ -136,10 +235,91 @@ extension AppKit.NSImage {
 #endif
     }
 
+    /// The "one" asset catalog image.
+    static var one: AppKit.NSImage {
+#if !targetEnvironment(macCatalyst)
+        .init(resource: .one)
+#else
+        .init()
+#endif
+    }
+
+    /// The "seven" asset catalog image.
+    static var seven: AppKit.NSImage {
+#if !targetEnvironment(macCatalyst)
+        .init(resource: .seven)
+#else
+        .init()
+#endif
+    }
+
+    /// The "share" asset catalog image.
+    static var share: AppKit.NSImage {
+#if !targetEnvironment(macCatalyst)
+        .init(resource: .share)
+#else
+        .init()
+#endif
+    }
+
+    /// The "six" asset catalog image.
+    static var six: AppKit.NSImage {
+#if !targetEnvironment(macCatalyst)
+        .init(resource: .six)
+#else
+        .init()
+#endif
+    }
+
+    /// The "three" asset catalog image.
+    static var three: AppKit.NSImage {
+#if !targetEnvironment(macCatalyst)
+        .init(resource: .three)
+#else
+        .init()
+#endif
+    }
+
+    /// The "three points" asset catalog image.
+    static var threePoints: AppKit.NSImage {
+#if !targetEnvironment(macCatalyst)
+        .init(resource: .threePoints)
+#else
+        .init()
+#endif
+    }
+
+    /// The "two" asset catalog image.
+    static var two: AppKit.NSImage {
+#if !targetEnvironment(macCatalyst)
+        .init(resource: .two)
+#else
+        .init()
+#endif
+    }
+
     /// The "user" asset catalog image.
     static var user: AppKit.NSImage {
 #if !targetEnvironment(macCatalyst)
         .init(resource: .user)
+#else
+        .init()
+#endif
+    }
+
+    /// The "user_s" asset catalog image.
+    static var userS: AppKit.NSImage {
+#if !targetEnvironment(macCatalyst)
+        .init(resource: .userS)
+#else
+        .init()
+#endif
+    }
+
+    /// The "user_ss" asset catalog image.
+    static var userSs: AppKit.NSImage {
+#if !targetEnvironment(macCatalyst)
+        .init(resource: .userSs)
 #else
         .init()
 #endif
@@ -162,6 +342,15 @@ extension AppKit.NSImage {
 @available(watchOS, unavailable)
 extension UIKit.UIImage {
 
+    /// The "collect" asset catalog image.
+    static var collect: UIKit.UIImage {
+#if !os(watchOS)
+        .init(resource: .collect)
+#else
+        .init()
+#endif
+    }
+
     /// The "color" asset catalog image.
     static var color: UIKit.UIImage {
 #if !os(watchOS)
@@ -171,10 +360,55 @@ extension UIKit.UIImage {
 #endif
     }
 
+    /// The "comment" asset catalog image.
+    static var comment: UIKit.UIImage {
+#if !os(watchOS)
+        .init(resource: .comment)
+#else
+        .init()
+#endif
+    }
+
     /// The "date" asset catalog image.
     static var date: UIKit.UIImage {
 #if !os(watchOS)
         .init(resource: .date)
+#else
+        .init()
+#endif
+    }
+
+    /// The "eight" asset catalog image.
+    static var eight: UIKit.UIImage {
+#if !os(watchOS)
+        .init(resource: .eight)
+#else
+        .init()
+#endif
+    }
+
+    /// The "five" asset catalog image.
+    static var five: UIKit.UIImage {
+#if !os(watchOS)
+        .init(resource: .five)
+#else
+        .init()
+#endif
+    }
+
+    /// The "four" asset catalog image.
+    static var four: UIKit.UIImage {
+#if !os(watchOS)
+        .init(resource: .four)
+#else
+        .init()
+#endif
+    }
+
+    /// The "heart" asset catalog image.
+    static var heart: UIKit.UIImage {
+#if !os(watchOS)
+        .init(resource: .heart)
 #else
         .init()
 #endif
@@ -207,10 +441,91 @@ extension UIKit.UIImage {
 #endif
     }
 
+    /// The "one" asset catalog image.
+    static var one: UIKit.UIImage {
+#if !os(watchOS)
+        .init(resource: .one)
+#else
+        .init()
+#endif
+    }
+
+    /// The "seven" asset catalog image.
+    static var seven: UIKit.UIImage {
+#if !os(watchOS)
+        .init(resource: .seven)
+#else
+        .init()
+#endif
+    }
+
+    /// The "share" asset catalog image.
+    static var share: UIKit.UIImage {
+#if !os(watchOS)
+        .init(resource: .share)
+#else
+        .init()
+#endif
+    }
+
+    /// The "six" asset catalog image.
+    static var six: UIKit.UIImage {
+#if !os(watchOS)
+        .init(resource: .six)
+#else
+        .init()
+#endif
+    }
+
+    /// The "three" asset catalog image.
+    static var three: UIKit.UIImage {
+#if !os(watchOS)
+        .init(resource: .three)
+#else
+        .init()
+#endif
+    }
+
+    /// The "three points" asset catalog image.
+    static var threePoints: UIKit.UIImage {
+#if !os(watchOS)
+        .init(resource: .threePoints)
+#else
+        .init()
+#endif
+    }
+
+    /// The "two" asset catalog image.
+    static var two: UIKit.UIImage {
+#if !os(watchOS)
+        .init(resource: .two)
+#else
+        .init()
+#endif
+    }
+
     /// The "user" asset catalog image.
     static var user: UIKit.UIImage {
 #if !os(watchOS)
         .init(resource: .user)
+#else
+        .init()
+#endif
+    }
+
+    /// The "user_s" asset catalog image.
+    static var userS: UIKit.UIImage {
+#if !os(watchOS)
+        .init(resource: .userS)
+#else
+        .init()
+#endif
+    }
+
+    /// The "user_ss" asset catalog image.
+    static var userSs: UIKit.UIImage {
+#if !os(watchOS)
+        .init(resource: .userSs)
 #else
         .init()
 #endif

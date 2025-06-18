@@ -10,6 +10,16 @@
 			<key>catalogPath</key>
 			<string>/Users/feng/Documents/memory frame/memory frame/Assets.xcassets</string>
 			<key>objcSymbol</key>
+			<string>ACImageNameCollect</string>
+			<key>relativePath</key>
+			<string>./collect.imageset</string>
+			<key>swiftSymbol</key>
+			<string>collect</string>
+		</dict>
+		<dict>
+			<key>catalogPath</key>
+			<string>/Users/feng/Documents/memory frame/memory frame/Assets.xcassets</string>
+			<key>objcSymbol</key>
 			<string>ACImageNameColor</string>
 			<key>relativePath</key>
 			<string>./color.imageset</string>
@@ -20,11 +30,61 @@
 			<key>catalogPath</key>
 			<string>/Users/feng/Documents/memory frame/memory frame/Assets.xcassets</string>
 			<key>objcSymbol</key>
+			<string>ACImageNameComment</string>
+			<key>relativePath</key>
+			<string>./comment.imageset</string>
+			<key>swiftSymbol</key>
+			<string>comment</string>
+		</dict>
+		<dict>
+			<key>catalogPath</key>
+			<string>/Users/feng/Documents/memory frame/memory frame/Assets.xcassets</string>
+			<key>objcSymbol</key>
 			<string>ACImageNameDate</string>
 			<key>relativePath</key>
 			<string>./date.imageset</string>
 			<key>swiftSymbol</key>
 			<string>date</string>
+		</dict>
+		<dict>
+			<key>catalogPath</key>
+			<string>/Users/feng/Documents/memory frame/memory frame/Assets.xcassets</string>
+			<key>objcSymbol</key>
+			<string>ACImageNameEight</string>
+			<key>relativePath</key>
+			<string>./eight.imageset</string>
+			<key>swiftSymbol</key>
+			<string>eight</string>
+		</dict>
+		<dict>
+			<key>catalogPath</key>
+			<string>/Users/feng/Documents/memory frame/memory frame/Assets.xcassets</string>
+			<key>objcSymbol</key>
+			<string>ACImageNameFive</string>
+			<key>relativePath</key>
+			<string>./five.imageset</string>
+			<key>swiftSymbol</key>
+			<string>five</string>
+		</dict>
+		<dict>
+			<key>catalogPath</key>
+			<string>/Users/feng/Documents/memory frame/memory frame/Assets.xcassets</string>
+			<key>objcSymbol</key>
+			<string>ACImageNameFour</string>
+			<key>relativePath</key>
+			<string>./four.imageset</string>
+			<key>swiftSymbol</key>
+			<string>four</string>
+		</dict>
+		<dict>
+			<key>catalogPath</key>
+			<string>/Users/feng/Documents/memory frame/memory frame/Assets.xcassets</string>
+			<key>objcSymbol</key>
+			<string>ACImageNameHeart</string>
+			<key>relativePath</key>
+			<string>./heart.imageset</string>
+			<key>swiftSymbol</key>
+			<string>heart</string>
 		</dict>
 		<dict>
 			<key>catalogPath</key>
@@ -60,11 +120,101 @@
 			<key>catalogPath</key>
 			<string>/Users/feng/Documents/memory frame/memory frame/Assets.xcassets</string>
 			<key>objcSymbol</key>
+			<string>ACImageNameOne</string>
+			<key>relativePath</key>
+			<string>./one.imageset</string>
+			<key>swiftSymbol</key>
+			<string>one</string>
+		</dict>
+		<dict>
+			<key>catalogPath</key>
+			<string>/Users/feng/Documents/memory frame/memory frame/Assets.xcassets</string>
+			<key>objcSymbol</key>
+			<string>ACImageNameSeven</string>
+			<key>relativePath</key>
+			<string>./seven.imageset</string>
+			<key>swiftSymbol</key>
+			<string>seven</string>
+		</dict>
+		<dict>
+			<key>catalogPath</key>
+			<string>/Users/feng/Documents/memory frame/memory frame/Assets.xcassets</string>
+			<key>objcSymbol</key>
+			<string>ACImageNameShare</string>
+			<key>relativePath</key>
+			<string>./share.imageset</string>
+			<key>swiftSymbol</key>
+			<string>share</string>
+		</dict>
+		<dict>
+			<key>catalogPath</key>
+			<string>/Users/feng/Documents/memory frame/memory frame/Assets.xcassets</string>
+			<key>objcSymbol</key>
+			<string>ACImageNameSix</string>
+			<key>relativePath</key>
+			<string>./six.imageset</string>
+			<key>swiftSymbol</key>
+			<string>six</string>
+		</dict>
+		<dict>
+			<key>catalogPath</key>
+			<string>/Users/feng/Documents/memory frame/memory frame/Assets.xcassets</string>
+			<key>objcSymbol</key>
+			<string>ACImageNameThree</string>
+			<key>relativePath</key>
+			<string>./three.imageset</string>
+			<key>swiftSymbol</key>
+			<string>three</string>
+		</dict>
+		<dict>
+			<key>catalogPath</key>
+			<string>/Users/feng/Documents/memory frame/memory frame/Assets.xcassets</string>
+			<key>objcSymbol</key>
+			<string>ACImageNameThreePoints</string>
+			<key>relativePath</key>
+			<string>./three points.imageset</string>
+			<key>swiftSymbol</key>
+			<string>threePoints</string>
+		</dict>
+		<dict>
+			<key>catalogPath</key>
+			<string>/Users/feng/Documents/memory frame/memory frame/Assets.xcassets</string>
+			<key>objcSymbol</key>
+			<string>ACImageNameTwo</string>
+			<key>relativePath</key>
+			<string>./two.imageset</string>
+			<key>swiftSymbol</key>
+			<string>two</string>
+		</dict>
+		<dict>
+			<key>catalogPath</key>
+			<string>/Users/feng/Documents/memory frame/memory frame/Assets.xcassets</string>
+			<key>objcSymbol</key>
 			<string>ACImageNameUser</string>
 			<key>relativePath</key>
 			<string>./user.imageset</string>
 			<key>swiftSymbol</key>
 			<string>user</string>
+		</dict>
+		<dict>
+			<key>catalogPath</key>
+			<string>/Users/feng/Documents/memory frame/memory frame/Assets.xcassets</string>
+			<key>objcSymbol</key>
+			<string>ACImageNameUserS</string>
+			<key>relativePath</key>
+			<string>./user_s.imageset</string>
+			<key>swiftSymbol</key>
+			<string>userS</string>
+		</dict>
+		<dict>
+			<key>catalogPath</key>
+			<string>/Users/feng/Documents/memory frame/memory frame/Assets.xcassets</string>
+			<key>objcSymbol</key>
+			<string>ACImageNameUserSs</string>
+			<key>relativePath</key>
+			<string>./user_ss.imageset</string>
+			<key>swiftSymbol</key>
+			<string>userSs</string>
 		</dict>
 		<dict>
 			<key>catalogPath</key>

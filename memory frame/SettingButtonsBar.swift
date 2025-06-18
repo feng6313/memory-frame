@@ -18,6 +18,7 @@ struct SettingButtonsBar: View {
     let onSelectionChanged: ((Int, String) -> Void)?
     let onColorChanged: ((Int, String) -> Void)?
     let onIconChanged: ((Int, String) -> Void)?
+    let isFromSevenView: Bool
     
     private let buttonTitles = ["边框", "文字", "时间", "地点", "图标"]
     private let colors = [
@@ -25,12 +26,13 @@ struct SettingButtonsBar: View {
         "#E5ECDB", "#C3D3DB", "#A98069", "#69733E", "#834643", "#A600FF", "#255B85"
     ]
     
-    init(borderWidth: CGFloat, selectedIndex: Binding<Int>, selectedColorIndex: Binding<Int>, selectedIconIndex: Binding<Int>, showEnterView: Binding<Bool>, onSelectionChanged: ((Int, String) -> Void)? = nil, onColorChanged: ((Int, String) -> Void)? = nil, onIconChanged: ((Int, String) -> Void)? = nil) {
+    init(borderWidth: CGFloat, selectedIndex: Binding<Int>, selectedColorIndex: Binding<Int>, selectedIconIndex: Binding<Int>, showEnterView: Binding<Bool>, isFromSevenView: Bool = false, onSelectionChanged: ((Int, String) -> Void)? = nil, onColorChanged: ((Int, String) -> Void)? = nil, onIconChanged: ((Int, String) -> Void)? = nil) {
         self.borderWidth = borderWidth
         self._selectedIndex = selectedIndex
         self._selectedColorIndex = selectedColorIndex
         self._selectedIconIndex = selectedIconIndex
         self._showEnterView = showEnterView
+        self.isFromSevenView = isFromSevenView
         self.onSelectionChanged = onSelectionChanged
         self.onColorChanged = onColorChanged
         self.onIconChanged = onIconChanged
@@ -139,7 +141,9 @@ struct SettingButtonsBar: View {
                     HStack(spacing: calculateMoreIconSpacing()) {
                         moreIconButton(iconName: "date")
                         moreIconButton(iconName: "map_b")
-                        // moreIconButton(iconName: "user") // 暂时注销，以后用的时候再加上
+                        if isFromSevenView {
+                            moreIconButton(iconName: "user")
+                        }
                     }
                     
                     Spacer()
@@ -160,7 +164,7 @@ struct SettingButtonsBar: View {
         }
         .frame(height: 222)
         .sheet(isPresented: $showDmuView) {
-            DmuView()
+            DmuView(showAvatarSettings: isFromSevenView)
         }
     }
     
@@ -206,7 +210,13 @@ struct SettingButtonsBar: View {
     
     private func moreIconButton(iconName: String) -> some View {
         Button(action: {
-            showDmuView = true
+            if iconName == "user" {
+                // user图标点击时显示DmuView并启用头像设置
+                showDmuView = true
+            } else {
+                // 其他图标的默认行为
+                showDmuView = true
+            }
         }) {
             Image(iconName)
                 .resizable()
