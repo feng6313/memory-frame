@@ -73,6 +73,7 @@ struct EightView: View {
                                 selectedColorIndex: .constant(currentColorIndex),
                                 selectedIconIndex: $selectedIconIndex,
                                 showEnterView: $showEnterView,
+                                isFromSevenView: true,
                                 onSelectionChanged: { index, title in
                                     print("选择了: \(title)")
                                 },
@@ -95,7 +96,7 @@ struct EightView: View {
                             .padding(.top, 20)
                         
                         Spacer()
-                    }
+                     }
                 }
             .navigationTitle("编辑")
             .navigationBarTitleDisplayMode(.inline)
@@ -204,13 +205,14 @@ struct PhotoFrameViewEight: View {
         frameWidth / 0.8 // 保持0.8:1比例
     }
     
-    // EightView特有：图片显示区域高度为背景高度的0.5
+    // EightView特有：图片显示区域高度为边框高度的0.65
     private var imageDisplayHeight: CGFloat {
-        frameHeight * 0.5
+        frameHeight * 0.65
     }
     
+    // 修改：图片宽度等于边框宽度，左右边框间距为0
     private var imageDisplayWidth: CGFloat {
-        frameWidth * 0.92 // 边框宽度减去上下左右各0.04×边框宽度的边距
+        frameWidth // 图片宽度等于边框宽度
     }
     
     // 计算初始缩放比例，确保图片完全显示在显示区域内
@@ -221,12 +223,23 @@ struct PhotoFrameViewEight: View {
         return min(scaleX, scaleY)
     }
     
+    // 修改：左右边框间距为0
     private var horizontalMargin: CGFloat {
-        frameWidth * 0.04
+        0 // 左右边框间距为0
+    }
+    
+    // 上边框高度 = 边框高度*0.1
+    private var topMargin: CGFloat {
+        return frameHeight * 0.1
+    }
+    
+    // 下边框高度 = 边框高度*0.25
+    private var bottomMargin: CGFloat {
+        return frameHeight * 0.25
     }
     
     private var verticalMargin: CGFloat {
-        frameHeight * 0.25
+        frameHeight * 0.04
     }
     
     // 限制图片偏移量，确保不超出显示区域
@@ -272,124 +285,194 @@ struct PhotoFrameViewEight: View {
                     .fill(frameColor)
                     .frame(width: frameWidth, height: frameHeight)
                 
-                VStack {
-                    HStack {
-                        // 图片显示区域容器
-                        ZStack {
-                            // 显示区域背景
-                            Rectangle()
-                                .fill(Color.gray.opacity(0.1))
-                                .frame(width: imageDisplayWidth, height: imageDisplayHeight)
-                            
-                            // 图片容器 - 限制图片在此区域内
-                            ZStack {
-                                Image(uiImage: image)
-                                    .resizable()
-                                    .aspectRatio(contentMode: .fill)
-                                    .scaleEffect(imageScale)
-                                    .offset(imageOffset)
-                                    .gesture(
-                                        SimultaneousGesture(
-                                            DragGesture()
-                                                .onChanged { value in
-                                                    imageOffset = CGSize(
-                                                        width: lastDragOffset.width + value.translation.width,
-                                                        height: lastDragOffset.height + value.translation.height
-                                                    )
-                                                }
-                                                .onEnded { value in
-                                                    let newOffset = CGSize(
-                                                        width: lastDragOffset.width + value.translation.width,
-                                                        height: lastDragOffset.height + value.translation.height
-                                                    )
-                                                    withAnimation(.easeOut(duration: 0.3)) {
-                                                        imageOffset = limitOffset(newOffset, scale: imageScale, displayWidth: imageDisplayWidth, displayHeight: imageDisplayHeight)
-                                                        lastDragOffset = imageOffset
-                                                    }
-                                                },
-                                            MagnificationGesture()
-                                                .onChanged { value in
-                                    // 计算新的缩放值
-                                    let newScale = baseScale * value
-                                    
-                                    // 计算当前缩放下的图片实际尺寸
-                                    let imageSize = image.size
-                                    let aspectRatio = imageSize.width / imageSize.height
-                                    let scaledWidth = imageDisplayWidth * newScale
-                                    let scaledHeight = imageDisplayHeight * newScale
-                                    
-                                    let currentImageWidth: CGFloat
-                                    let currentImageHeight: CGFloat
-                                    
-                                    if aspectRatio > imageDisplayWidth / imageDisplayHeight {
-                                        currentImageHeight = scaledHeight
-                                        currentImageWidth = currentImageHeight * aspectRatio
-                                    } else {
-                                        currentImageWidth = scaledWidth
-                                        currentImageHeight = currentImageWidth / aspectRatio
-                                    }
-                                    
-                                    // 确保当前尺寸不小于初次加载时的尺寸
-                                    if currentImageWidth >= initialLoadSize.width && currentImageHeight >= initialLoadSize.height {
-                                        imageScale = min(3.0, newScale)
-                                    }
-                                    
-                                    imageOffset = limitOffset(imageOffset, scale: imageScale, displayWidth: imageDisplayWidth, displayHeight: imageDisplayHeight)
-                                }
-                                                .onEnded { value in
-                                                    // 更新基准缩放值
-                                                    baseScale = imageScale
-                                                }
-                                        )
-                                    )
-                            }
-                            .frame(width: imageDisplayWidth, height: imageDisplayHeight)
-                            .clipShape(Rectangle())
-                            .onAppear {
-                                // 记录图片初次加载时的实际显示尺寸
-                                let imageSize = image.size
-                                let aspectRatio = imageSize.width / imageSize.height
-                                
-                                if aspectRatio > imageDisplayWidth / imageDisplayHeight {
-                                    // 宽图片：高度填满显示区域，宽度按比例缩放
-                                    initialLoadSize = CGSize(
-                                        width: imageDisplayHeight * aspectRatio,
-                                        height: imageDisplayHeight
-                                    )
+                VStack(spacing: 0) {
+                    // 图片上方的用户信息
+                    VStack {
+                        Spacer()
+                        
+                        HStack {
+                            HStack(spacing: 8) {
+                                if let avatarImage = settings.userAvatar {
+                                    Image(uiImage: avatarImage)
+                                        .resizable()
+                                        .aspectRatio(contentMode: .fill)
+                                        .frame(width: 28, height: 28)
+                                        .clipShape(Circle())
                                 } else {
-                                    // 高图片或正方形：宽度填满显示区域，高度按比例缩放
-                                    initialLoadSize = CGSize(
-                                        width: imageDisplayWidth,
-                                        height: imageDisplayWidth / aspectRatio
-                                    )
+                                    Image("user_s")
+                                        .renderingMode(.template)
+                                        .resizable()
+                                        .frame(width: 28, height: 28)
+                                        .foregroundColor(iconColor)
                                 }
+                                Text(settings.userName)
+                                    .font(.system(size: 12))
+                                    .foregroundColor(textColor)
                             }
+                            .padding(.leading, 15) // user_s和独家记忆向右移动15点
                             
-                            // 时间显示 - 图片右下角
-                            if settings.showDate {
-                                VStack {
-                                    Spacer()
-                                    HStack {
-                                        Spacer()
-                                        Text(settings.getFormattedDate())
-                                            .font(.system(size: 18, weight: .regular))
-                                            .foregroundColor(timeColor)
-                                            .padding(.trailing, 12)
-                                            .padding(.bottom, 12)
-                                    }
-                                }
-                            }
+                            Spacer()
+                            
+                            Image("three points")
+                                .renderingMode(.template)
+                                .resizable()
+                                .frame(width: 20, height: 20)
+                                .foregroundColor(iconColor)
+                                .padding(.trailing, 15) // three points向左移动15点
                         }
-                        .frame(width: imageDisplayWidth, height: imageDisplayHeight)
+                        .padding(.horizontal, horizontalMargin)
                         
                         Spacer()
                     }
-                    .padding(.leading, horizontalMargin)
-                    .padding(.top, verticalMargin)
+                    .frame(height: topMargin)
                     
-                    // 图片下方的空白区域，上下居中显示文字和地点
-                    VStack {
-                        Spacer()
+                    // 修改：图片显示区域不再有左边距，直接占满整个边框宽度
+                    // 图片显示区域容器
+                    ZStack {
+                        // 显示区域背景
+                        Rectangle()
+                            .fill(Color.gray.opacity(0.1))
+                            .frame(width: imageDisplayWidth, height: imageDisplayHeight)
+                        
+                        // 图片容器 - 限制图片在此区域内
+                        ZStack {
+
+                            Image(uiImage: image)
+                                .resizable()
+                                .aspectRatio(contentMode: .fill)
+                                .scaleEffect(imageScale)
+                                .offset(imageOffset)
+                                .gesture(
+                                    SimultaneousGesture(
+                                        DragGesture()
+                                            .onChanged { value in
+                                                imageOffset = CGSize(
+                                                    width: lastDragOffset.width + value.translation.width,
+                                                    height: lastDragOffset.height + value.translation.height
+                                                )
+                                            }
+                                            .onEnded { value in
+                                                let newOffset = CGSize(
+                                                    width: lastDragOffset.width + value.translation.width,
+                                                    height: lastDragOffset.height + value.translation.height
+                                                )
+                                                withAnimation(.easeOut(duration: 0.3)) {
+                                                    imageOffset = limitOffset(newOffset, scale: imageScale, displayWidth: imageDisplayWidth, displayHeight: imageDisplayHeight)
+                                                    lastDragOffset = imageOffset
+                                                }
+                                            },
+                                        MagnificationGesture()
+                                            .onChanged { value in
+                                // 计算新的缩放值
+                                let newScale = baseScale * value
+                                
+                                // 计算当前缩放下的图片实际尺寸
+                                let imageSize = image.size
+                                let aspectRatio = imageSize.width / imageSize.height
+                                let scaledWidth = imageDisplayWidth * newScale
+                                let scaledHeight = imageDisplayHeight * newScale
+                                
+                                let currentImageWidth: CGFloat
+                                let currentImageHeight: CGFloat
+                                
+                                if aspectRatio > imageDisplayWidth / imageDisplayHeight {
+                                    currentImageHeight = scaledHeight
+                                    currentImageWidth = currentImageHeight * aspectRatio
+                                } else {
+                                    currentImageWidth = scaledWidth
+                                    currentImageHeight = currentImageWidth / aspectRatio
+                                }
+                                
+                                // 确保当前尺寸不小于初次加载时的尺寸
+                                if currentImageWidth >= initialLoadSize.width && currentImageHeight >= initialLoadSize.height {
+                                    imageScale = min(3.0, newScale)
+                                }
+                                
+                                imageOffset = limitOffset(imageOffset, scale: imageScale, displayWidth: imageDisplayWidth, displayHeight: imageDisplayHeight)
+                            }
+                                            .onEnded { value in
+                                                // 更新基准缩放值
+                                                baseScale = imageScale
+                                            }
+                                    )
+                                )
+                        }
+                        .frame(width: imageDisplayWidth, height: imageDisplayHeight)
+                        .clipShape(Rectangle())
+                        .onAppear {
+                            // 记录图片初次加载时的实际显示尺寸
+                            let imageSize = image.size
+                            let aspectRatio = imageSize.width / imageSize.height
+                            
+                            if aspectRatio > imageDisplayWidth / imageDisplayHeight {
+                                // 宽图片：高度填满显示区域，宽度按比例缩放
+                                initialLoadSize = CGSize(
+                                    width: imageDisplayHeight * aspectRatio,
+                                    height: imageDisplayHeight
+                                )
+                            } else {
+                                // 高图片或正方形：宽度填满显示区域，高度按比例缩放
+                                initialLoadSize = CGSize(
+                                    width: imageDisplayWidth,
+                                    height: imageDisplayWidth / aspectRatio
+                                )
+                            }
+                        }
+                        
+                        // 时间显示 - 图片右下角
+                        if settings.showDate {
+                            VStack {
+                                Spacer()
+                                HStack {
+                                    Spacer()
+                                    Text(settings.getFormattedDate())
+                                        .font(.system(size: 18, weight: .regular))
+                                        .foregroundColor(timeColor)
+                                        .padding(.trailing, 12)
+                                        .padding(.bottom, 12)
+                                }
+                            }
+                        }
+                    }
+                    .frame(width: imageDisplayWidth, height: imageDisplayHeight)
+                    
+                    // 图片下方的空白区域，显示4个图标、文字和地点
+                     VStack(spacing: 0) {
+                        // 4个图标，放在图片下方8点处
+                         HStack(spacing: 0) {
+                             // 前三个图标靠左对齐，间距12
+                             HStack(spacing: 12) {
+                                 Image("heart")
+                                     .resizable()
+                                     .frame(width: 26, height: 26)
+                                 
+                                 Image("comment")
+                                     .renderingMode(.template)
+                                     .resizable()
+                                     .frame(width: 26, height: 26)
+                                     .foregroundColor(iconColor)
+                                 
+                                 Image("share")
+                                     .renderingMode(.template)
+                                     .resizable()
+                                     .frame(width: 26, height: 26)
+                                     .foregroundColor(iconColor)
+                             }
+                             .padding(.leading, 15) // heart、comment、share向右移动15点
+                             
+                             Spacer()
+                             
+                             // 最后一个图标和图片右对齐
+                             Image("collect")
+                                 .renderingMode(.template)
+                                 .resizable()
+                                 .frame(width: 26, height: 26)
+                                 .foregroundColor(iconColor)
+                                 .padding(.trailing, 15) // collect向左移动15点
+                         }
+                         .padding(.horizontal, horizontalMargin)
+                         .padding(.top, 8)
+                         .padding(.bottom, 12)
                         
                         // 文字和地点显示区域，与图片左对齐
                         HStack {
@@ -415,13 +498,14 @@ struct PhotoFrameViewEight: View {
                                     }
                                 }
                             }
-                            .padding(.leading, horizontalMargin)
+                            .padding(.leading, horizontalMargin + 15) // 文字和地点向右移动15点
                             
                             Spacer()
                         }
                         
                         Spacer()
                     }
+                    .frame(height: bottomMargin)
                 }
             }
             .frame(width: frameWidth, height: frameHeight)
