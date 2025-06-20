@@ -405,7 +405,7 @@ struct PhotoFrameViewFive: View {
                         // 时间显示 - 居中对齐，距离底部12点
                         if settings.showDate {
                             Text(settings.getFormattedDate())
-                                .font(.system(size: 18, weight: .regular))
+                                .font(.custom("PixelMplus12-Regular", size: 18))
                                 .foregroundColor(timeColor)
                                 .padding(.bottom, 12)
                         }

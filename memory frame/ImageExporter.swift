@@ -624,4 +624,228 @@ extension ImageExporter {
         // 保存到相册
         saveToPhotoLibrary(content: photoFrameViewEight, completion: completion)
     }
+    
+    /// 保存PhotoFrameViewNine到相册的便捷方法（NineView专用）
+    /// - Parameters:
+    ///   - image: 原始图片
+    ///   - screenWidth: 屏幕宽度
+    ///   - imageScale: 图片缩放比例
+    ///   - imageOffset: 图片偏移量
+    ///   - memoryText: 回忆文字
+    ///   - frameColorIndex: 边框颜色索引
+    ///   - textColorIndex: 文字颜色索引
+    ///   - timeColorIndex: 时间颜色索引
+    ///   - locationColorIndex: 地点颜色索引
+    ///   - iconColorIndex: 图标颜色索引
+    ///   - completion: 完成回调
+    static func savePhotoFrameNine(
+        image: UIImage,
+        screenWidth: CGFloat,
+        imageScale: CGFloat,
+        imageOffset: CGSize,
+        memoryText: String,
+        frameColorIndex: Int,
+        textColorIndex: Int,
+        timeColorIndex: Int,
+        locationColorIndex: Int,
+        iconColorIndex: Int,
+        completion: @escaping SaveCompletion
+    ) {
+        // 验证图片有效性
+        guard image.size.width > 0 && image.size.height > 0 else {
+            print("图片验证失败: 尺寸无效")
+            DispatchQueue.main.async {
+                completion(false, "图片无效，无法保存")
+            }
+            return
+        }
+        
+        print("图片验证通过，尺寸: \(image.size)")
+        
+        // 创建PhotoFrameViewNine
+        let photoFrameViewNine = PhotoFrameViewNine(
+            image: image,
+            screenWidth: screenWidth,
+            imageScale: .constant(imageScale),
+            imageOffset: .constant(imageOffset),
+            showEnterView: .constant(false),
+            memoryText: .constant(memoryText),
+            frameColorIndex: frameColorIndex,
+            textColorIndex: textColorIndex,
+            timeColorIndex: timeColorIndex,
+            locationColorIndex: locationColorIndex,
+            iconColorIndex: iconColorIndex
+        )
+        
+        // 保存到相册
+        saveToPhotoLibrary(content: photoFrameViewNine, completion: completion)
+    }
+    
+    /// 保存PhotoFrameViewTen到相册的便捷方法（TenView专用）
+    /// - Parameters:
+    ///   - image: 原始图片
+    ///   - screenWidth: 屏幕宽度
+    ///   - imageScale: 图片缩放比例
+    ///   - imageOffset: 图片偏移量
+    ///   - memoryText: 回忆文字
+    ///   - frameColorIndex: 边框颜色索引
+    ///   - textColorIndex: 文字颜色索引
+    ///   - timeColorIndex: 时间颜色索引
+    ///   - locationColorIndex: 地点颜色索引
+    ///   - iconColorIndex: 图标颜色索引
+    ///   - completion: 完成回调
+    static func savePhotoFrameTen(
+        image: UIImage,
+        screenWidth: CGFloat,
+        imageScale: CGFloat,
+        imageOffset: CGSize,
+        memoryText: String,
+        frameColorIndex: Int,
+        textColorIndex: Int,
+        timeColorIndex: Int,
+        locationColorIndex: Int,
+        iconColorIndex: Int,
+        completion: @escaping SaveCompletion
+    ) {
+        // 验证图片有效性
+        guard image.size.width > 0 && image.size.height > 0 else {
+            print("图片验证失败: 尺寸无效")
+            DispatchQueue.main.async {
+                completion(false, "图片无效，无法保存")
+            }
+            return
+        }
+        
+        print("图片验证通过，尺寸: \(image.size)")
+        
+        // 创建PhotoFrameViewTen
+        let photoFrameViewTen = PhotoFrameViewTen(
+            image: image,
+            screenWidth: screenWidth,
+            imageScale: .constant(imageScale),
+            imageOffset: .constant(imageOffset),
+            showEnterView: .constant(false),
+            memoryText: .constant(memoryText),
+            frameColorIndex: frameColorIndex,
+            textColorIndex: textColorIndex,
+            timeColorIndex: timeColorIndex,
+            locationColorIndex: locationColorIndex,
+            iconColorIndex: iconColorIndex
+        )
+        
+        // 保存到相册
+        saveToPhotoLibrary(content: photoFrameViewTen, completion: completion)
+    }
+    
+    /// 保存PhotoFrameViewTwelve到相册的便捷方法（TwelveView专用）
+    /// - Parameters:
+    ///   - image: 原始图片
+    ///   - screenWidth: 屏幕宽度
+    ///   - imageScale: 图片缩放比例
+    ///   - imageOffset: 图片偏移量
+    ///   - memoryText: 回忆文字
+    ///   - frameColorIndex: 边框颜色索引
+    ///   - textColorIndex: 文字颜色索引
+    ///   - timeColorIndex: 时间颜色索引
+    ///   - locationColorIndex: 地点颜色索引
+    ///   - iconColorIndex: 图标颜色索引
+    ///   - completion: 完成回调
+    static func savePhotoFrameTwelve(
+        image: UIImage,
+        screenWidth: CGFloat,
+        imageScale: CGFloat,
+        imageOffset: CGSize,
+        memoryText: String,
+        frameColorIndex: Int,
+        textColorIndex: Int,
+        timeColorIndex: Int,
+        locationColorIndex: Int,
+        iconColorIndex: Int,
+        completion: @escaping SaveCompletion
+    ) {
+        // 验证图片有效性
+        guard image.size.width > 0 && image.size.height > 0 else {
+            print("图片验证失败: 尺寸无效")
+            DispatchQueue.main.async {
+                completion(false, "图片无效，无法保存")
+            }
+            return
+        }
+        
+        print("图片验证通过，尺寸: \(image.size)")
+        
+        // 创建PhotoFrameViewTwelve
+        let photoFrameViewTwelve = PhotoFrameViewTwelve(
+            image: image,
+            screenWidth: screenWidth,
+            imageScale: .constant(imageScale),
+            imageOffset: .constant(imageOffset),
+            showEnterView: .constant(false),
+            memoryText: .constant(memoryText),
+            frameColorIndex: frameColorIndex,
+            textColorIndex: textColorIndex,
+            timeColorIndex: timeColorIndex,
+            locationColorIndex: locationColorIndex,
+            iconColorIndex: iconColorIndex
+        )
+        
+        // 保存到相册
+        saveToPhotoLibrary(content: photoFrameViewTwelve, completion: completion)
+    }
+    
+    /// 保存PhotoFrameViewEleven到相册的便捷方法（ElevenView专用）
+    /// - Parameters:
+    ///   - image: 原始图片
+    ///   - screenWidth: 屏幕宽度
+    ///   - imageScale: 图片缩放比例
+    ///   - imageOffset: 图片偏移量
+    ///   - memoryText: 回忆文字
+    ///   - frameColorIndex: 边框颜色索引
+    ///   - textColorIndex: 文字颜色索引
+    ///   - timeColorIndex: 时间颜色索引
+    ///   - locationColorIndex: 地点颜色索引
+    ///   - iconColorIndex: 图标颜色索引
+    ///   - completion: 完成回调
+    static func savePhotoFrameEleven(
+        image: UIImage,
+        screenWidth: CGFloat,
+        imageScale: CGFloat,
+        imageOffset: CGSize,
+        memoryText: String,
+        frameColorIndex: Int,
+        textColorIndex: Int,
+        timeColorIndex: Int,
+        locationColorIndex: Int,
+        iconColorIndex: Int,
+        completion: @escaping SaveCompletion
+    ) {
+        // 验证图片有效性
+        guard image.size.width > 0 && image.size.height > 0 else {
+            print("图片验证失败: 尺寸无效")
+            DispatchQueue.main.async {
+                completion(false, "图片无效，无法保存")
+            }
+            return
+        }
+        
+        print("图片验证通过，尺寸: \(image.size)")
+        
+        // 创建PhotoFrameViewEleven
+        let photoFrameViewEleven = PhotoFrameViewEleven(
+            image: image,
+            screenWidth: screenWidth,
+            imageScale: .constant(imageScale),
+            imageOffset: .constant(imageOffset),
+            showEnterView: .constant(false),
+            memoryText: .constant(memoryText),
+            frameColorIndex: frameColorIndex,
+            textColorIndex: textColorIndex,
+            timeColorIndex: timeColorIndex,
+            locationColorIndex: locationColorIndex,
+            iconColorIndex: iconColorIndex
+        )
+        
+        // 保存到相册
+        saveToPhotoLibrary(content: photoFrameViewEleven, completion: completion)
+    }
 }

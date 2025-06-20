@@ -1,15 +1,15 @@
 //
-//  SevenView.swift
+//  TwelveView.swift
 //  memory frame
 //
-//  Created by feng on 2025/6/16.
+//  Created by feng on 2025/6/13.
 //
 
 import SwiftUI
 import UIKit
 import Photos
 
-struct SevenView: View {
+struct TwelveView: View {
     let selectedImage: UIImage
     @Environment(\.dismiss) private var dismiss
     @State private var imageScale: CGFloat = 1.0
@@ -52,7 +52,7 @@ struct SevenView: View {
                     
                     VStack(spacing: 0) {
                         // 照片边框
-                        PhotoFrameViewSeven(
+                        PhotoFrameViewTwelve(
                             image: selectedImage,
                             screenWidth: geometry.size.width,
                             imageScale: $imageScale,
@@ -73,7 +73,6 @@ struct SevenView: View {
                                 selectedColorIndex: .constant(currentColorIndex),
                                 selectedIconIndex: $selectedIconIndex,
                                 showEnterView: $showEnterView,
-                                isFromSevenView: true,
                                 onSelectionChanged: { index, title in
                                     print("选择了: \(title)")
                                 },
@@ -96,7 +95,7 @@ struct SevenView: View {
                             .padding(.top, 20)
                         
                         Spacer()
-                     }
+                    }
                 }
             .navigationTitle("编辑")
             .navigationBarTitleDisplayMode(.inline)
@@ -148,7 +147,42 @@ struct SevenView: View {
     }
 }
 
-struct PhotoFrameViewSeven: View {
+// MARK: - TwelveView Extension
+extension TwelveView {
+    // 保存图片到相册
+    private func saveImageToPhotoLibrary() {
+        print("开始保存图片到相册流程")
+        
+        // 获取屏幕宽度
+        let currentScreenWidth = UIScreen.main.bounds.width
+        
+        // 使用ImageExporter保存图片
+        ImageExporter.savePhotoFrameTwelve(
+            image: selectedImage,
+            screenWidth: currentScreenWidth,
+            imageScale: imageScale,
+            imageOffset: imageOffset,
+            memoryText: memoryText,
+            frameColorIndex: frameColorIndex,
+            textColorIndex: textColorIndex,
+            timeColorIndex: timeColorIndex,
+            locationColorIndex: locationColorIndex,
+            iconColorIndex: iconColorIndex
+        ) { [self] success, error in
+            DispatchQueue.main.async {
+                if success {
+                    self.saveMessage = "图片已成功保存到相册"
+                } else {
+                    self.saveMessage = error
+                }
+                self.showingSaveAlert = true
+            }
+        }
+    }
+}
+
+// MARK: - PhotoFrameViewTwelve
+struct PhotoFrameViewTwelve: View {
     let image: UIImage
     let screenWidth: CGFloat
     @Binding var imageScale: CGFloat
@@ -169,7 +203,7 @@ struct PhotoFrameViewSeven: View {
     // 颜色数组，与SettingButtonsBar保持一致
     private let colors = [
         "#FFFFFF", "#1C1E22", "#F4E6E7", "#F2EEE3", "#F56E00", "#CEC3B3", "#2DB471",
-        "#E5ECDB", "#A98069", "#A98069", "#69733E", "#834643", "#A600FF", "#255B85"
+        "#E5ECDB", "#C3D3DB", "#A98069", "#69733E", "#834643", "#A600FF", "#255B85"
     ]
     
     // 边框颜色
@@ -197,21 +231,29 @@ struct PhotoFrameViewSeven: View {
         return Color(hex: colors[iconColorIndex])
     }
     
+    // 背景宽度
     private var frameWidth: CGFloat {
         screenWidth - 24 // 左右各留12pt边距
     }
     
+    // 背景高度
     private var frameHeight: CGFloat {
         frameWidth / 0.8 // 保持0.8:1比例
     }
     
-    // SevenView特有：图片显示区域高度为边框高度的0.65
-    private var imageDisplayHeight: CGFloat {
-        frameHeight * 0.65
+    // 图片显示区宽度 = 背景宽度*0.84
+    private var imageDisplayWidth: CGFloat {
+        frameWidth * 0.84
     }
     
-    private var imageDisplayWidth: CGFloat {
-        frameWidth * 0.92 // 边框宽度减去上下左右各0.04×边框宽度的边距
+    // 图片显示区高度 = 背景高度*0.44
+    private var imageDisplayHeight: CGFloat {
+        frameHeight * 0.44
+    }
+    
+    // 上边框高度、左右边框宽度 = 背景宽度*0.08
+    private var borderWidth: CGFloat {
+        frameWidth * 0.08
     }
     
     // 计算初始缩放比例，确保图片完全显示在显示区域内
@@ -222,39 +264,21 @@ struct PhotoFrameViewSeven: View {
         return min(scaleX, scaleY)
     }
     
-    private var horizontalMargin: CGFloat {
-        frameWidth * 0.04
-    }
-    
-    // 上边框高度 = 边框高度*0.1
-    private var topMargin: CGFloat {
-        return frameHeight * 0.1
-    }
-    
-    // 下边框高度 = 边框高度*0.25
-    private var bottomMargin: CGFloat {
-        return frameHeight * 0.25
-    }
-    
-    private var verticalMargin: CGFloat {
-        frameHeight * 0.04
-    }
-    
     // 限制图片偏移量，确保不超出显示区域
-    private func limitOffset(_ offset: CGSize, scale: CGFloat, displayWidth: CGFloat, displayHeight: CGFloat) -> CGSize {
+    private func limitOffset(_ offset: CGSize, scale: CGFloat) -> CGSize {
         // 获取图片的原始尺寸
         let imageSize = image.size
         
         // 计算图片在显示区域内的实际显示尺寸
         let aspectRatio = imageSize.width / imageSize.height
-        let scaledWidth = displayWidth * scale
-        let scaledHeight = displayHeight * scale
+        let scaledWidth = imageDisplayWidth * scale
+        let scaledHeight = imageDisplayHeight * scale
         
         // 计算实际的图片显示尺寸（考虑aspectRatio: .fill）
         let actualImageWidth: CGFloat
         let actualImageHeight: CGFloat
         
-        if aspectRatio > displayWidth / displayHeight {
+        if aspectRatio > imageDisplayWidth / imageDisplayHeight {
             // 宽图片：高度填满显示区域，宽度按比例缩放
             actualImageHeight = scaledHeight
             actualImageWidth = actualImageHeight * aspectRatio
@@ -265,8 +289,8 @@ struct PhotoFrameViewSeven: View {
         }
         
         // 计算最大允许的偏移量
-        let maxOffsetX = max(0, (actualImageWidth - displayWidth) / 2)
-        let maxOffsetY = max(0, (actualImageHeight - displayHeight) / 2)
+        let maxOffsetX = max(0, (actualImageWidth - imageDisplayWidth) / 2)
+        let maxOffsetY = max(0, (actualImageHeight - imageDisplayHeight) / 2)
         
         // 限制偏移量在允许范围内
         let limitedX = max(-maxOffsetX, min(maxOffsetX, offset.width))
@@ -284,55 +308,26 @@ struct PhotoFrameViewSeven: View {
                     .frame(width: frameWidth, height: frameHeight)
                 
                 VStack(spacing: 0) {
-                    // 图片上方的用户信息
-                    VStack {
-                        Spacer()
-                        
-                        HStack {
-                            HStack(spacing: 8) {
-                                if let avatarImage = settings.userAvatar {
-                                    Image(uiImage: avatarImage)
-                                        .resizable()
-                                        .aspectRatio(contentMode: .fill)
-                                        .frame(width: 28, height: 28)
-                                        .clipShape(Circle())
-                                } else {
-                                    Image("user_s")
-                                        .renderingMode(.template)
-                                        .resizable()
-                                        .frame(width: 28, height: 28)
-                                        .foregroundColor(iconColor)
-                                }
-                                Text(settings.userName)
-                                    .font(.system(size: 12))
-                                    .foregroundColor(textColor)
-                            }
-                            
-                            Spacer()
-                            
-                            Image("three points")
-                                .renderingMode(.template)
-                                .resizable()
-                                .frame(width: 20, height: 20)
-                                .foregroundColor(iconColor)
-                        }
-                        .padding(.horizontal, horizontalMargin)
-                        
-                        Spacer()
-                    }
-                    .frame(height: topMargin)
+                    // 上边框区域
+                    Rectangle()
+                        .fill(Color.clear)
+                        .frame(width: frameWidth, height: borderWidth)
                     
-                    HStack {
-                        // 图片显示区域容器
+                    HStack(spacing: 0) {
+                        // 左边框
+                        Rectangle()
+                            .fill(Color.clear)
+                            .frame(width: borderWidth, height: imageDisplayHeight)
+                        
+                        // 图片显示区域
                         ZStack {
                             // 显示区域背景
                             Rectangle()
-                                .fill(Color.gray.opacity(0.1))
+                                .fill(Color.clear)
                                 .frame(width: imageDisplayWidth, height: imageDisplayHeight)
                             
-                            // 图片容器 - 限制图片在此区域内
+                            // 图片容器 - 限制图片在此区域内，设置圆角半径为300
                             ZStack {
-
                                 Image(uiImage: image)
                                     .resizable()
                                     .aspectRatio(contentMode: .fill)
@@ -353,39 +348,39 @@ struct PhotoFrameViewSeven: View {
                                                         height: lastDragOffset.height + value.translation.height
                                                     )
                                                     withAnimation(.easeOut(duration: 0.3)) {
-                                                        imageOffset = limitOffset(newOffset, scale: imageScale, displayWidth: imageDisplayWidth, displayHeight: imageDisplayHeight)
+                                                        imageOffset = limitOffset(newOffset, scale: imageScale)
                                                         lastDragOffset = imageOffset
                                                     }
                                                 },
                                             MagnificationGesture()
                                                 .onChanged { value in
-                                    // 计算新的缩放值
-                                    let newScale = baseScale * value
-                                    
-                                    // 计算当前缩放下的图片实际尺寸
-                                    let imageSize = image.size
-                                    let aspectRatio = imageSize.width / imageSize.height
-                                    let scaledWidth = imageDisplayWidth * newScale
-                                    let scaledHeight = imageDisplayHeight * newScale
-                                    
-                                    let currentImageWidth: CGFloat
-                                    let currentImageHeight: CGFloat
-                                    
-                                    if aspectRatio > imageDisplayWidth / imageDisplayHeight {
-                                        currentImageHeight = scaledHeight
-                                        currentImageWidth = currentImageHeight * aspectRatio
-                                    } else {
-                                        currentImageWidth = scaledWidth
-                                        currentImageHeight = currentImageWidth / aspectRatio
-                                    }
-                                    
-                                    // 确保当前尺寸不小于初次加载时的尺寸
-                                    if currentImageWidth >= initialLoadSize.width && currentImageHeight >= initialLoadSize.height {
-                                        imageScale = min(3.0, newScale)
-                                    }
-                                    
-                                    imageOffset = limitOffset(imageOffset, scale: imageScale, displayWidth: imageDisplayWidth, displayHeight: imageDisplayHeight)
-                                }
+                                                    // 计算新的缩放值
+                                                    let newScale = baseScale * value
+                                                    
+                                                    // 计算当前缩放下的图片实际尺寸
+                                                    let imageSize = image.size
+                                                    let aspectRatio = imageSize.width / imageSize.height
+                                                    let scaledWidth = imageDisplayWidth * newScale
+                                                    let scaledHeight = imageDisplayHeight * newScale
+                                                    
+                                                    let currentImageWidth: CGFloat
+                                                    let currentImageHeight: CGFloat
+                                                    
+                                                    if aspectRatio > imageDisplayWidth / imageDisplayHeight {
+                                                        currentImageHeight = scaledHeight
+                                                        currentImageWidth = currentImageHeight * aspectRatio
+                                                    } else {
+                                                        currentImageWidth = scaledWidth
+                                                        currentImageHeight = currentImageWidth / aspectRatio
+                                                    }
+                                                    
+                                                    // 确保当前尺寸不小于初次加载时的尺寸
+                                                    if currentImageWidth >= initialLoadSize.width && currentImageHeight >= initialLoadSize.height {
+                                                        imageScale = min(3.0, newScale)
+                                                    }
+                                                    
+                                                    imageOffset = limitOffset(imageOffset, scale: imageScale)
+                                                }
                                                 .onEnded { value in
                                                     // 更新基准缩放值
                                                     baseScale = imageScale
@@ -394,7 +389,7 @@ struct PhotoFrameViewSeven: View {
                                     )
                             }
                             .frame(width: imageDisplayWidth, height: imageDisplayHeight)
-                            .clipShape(Rectangle())
+                            .clipShape(RoundedRectangle(cornerRadius: 300))
                             .onAppear {
                                 // 记录图片初次加载时的实际显示尺寸
                                 let imageSize = image.size
@@ -414,96 +409,66 @@ struct PhotoFrameViewSeven: View {
                                     )
                                 }
                             }
-                            
-                            // 时间显示 - 图片右下角
-                            if settings.showDate {
-                                VStack {
-                                    Spacer()
-                                    HStack {
-                                        Spacer()
-                                        Text(settings.getFormattedDate())
-                                            .font(.custom("PixelMplus12-Regular", size: 18))
-                                            .foregroundColor(timeColor)
-                                            .padding(.trailing, 12)
-                                            .padding(.bottom, 12)
-                                    }
-                                }
-                            }
                         }
                         .frame(width: imageDisplayWidth, height: imageDisplayHeight)
                         
-                        Spacer()
+                        // 右边框
+                        Rectangle()
+                            .fill(Color.clear)
+                            .frame(width: borderWidth, height: imageDisplayHeight)
                     }
-                    .padding(.leading, horizontalMargin)
                     
-                    // 图片下方的空白区域，显示4个图标、文字和地点
-                     VStack(spacing: 0) {
-                        // 4个图标，放在图片下方8点处
-                         HStack(spacing: 0) {
-                             // 前三个图标靠左对齐，间距12
-                             HStack(spacing: 12) {
-                                 Image("heart")
-                                     .resizable()
-                                     .frame(width: 26, height: 26)
-                                 
-                                 Image("comment")
-                                     .renderingMode(.template)
-                                     .resizable()
-                                     .frame(width: 26, height: 26)
-                                     .foregroundColor(iconColor)
-                                 
-                                 Image("share")
-                                     .renderingMode(.template)
-                                     .resizable()
-                                     .frame(width: 26, height: 26)
-                                     .foregroundColor(iconColor)
-                             }
-                             
-                             Spacer()
-                             
-                             // 最后一个图标和图片右对齐
-                             Image("collect")
-                                 .renderingMode(.template)
-                                 .resizable()
-                                 .frame(width: 26, height: 26)
-                                 .foregroundColor(iconColor)
-                         }
-                         .padding(.horizontal, horizontalMargin)
-                         .padding(.top, 8)
-                         .padding(.bottom, 12)
+                    // 下方区域 - 文字和位置位于背景高度*0.55处，时间位于下边缘上方24点处
+                    ZStack {
+                        Rectangle()
+                            .fill(Color.clear)
+                            .frame(width: frameWidth, height: frameHeight - borderWidth - imageDisplayHeight)
                         
-                        // 文字和地点显示区域，与图片左对齐
-                        HStack {
-                            VStack(alignment: .leading, spacing: 4) {
-                                // 文字显示
-                                Text(formatText(memoryText))
-                                    .font(.system(size: 15, weight: .medium))
-                                    .foregroundColor(textColor)
-                                    .multilineTextAlignment(.leading)
-                                    .lineLimit(2)
+                        VStack {
+                            // 文字和位置显示区域 - 位于背景高度*0.55处
+                            VStack {
+                                Spacer()
+                                    .frame(height: frameHeight * 0.55 - borderWidth - imageDisplayHeight)
                                 
-                                // 地点显示
-                                if settings.showLocation {
-                                    HStack(spacing: 4) {
-                                        Image("map_s")
-                                            .renderingMode(.template)
-                                            .resizable()
-                                            .frame(width: 12, height: 12)
-                                            .foregroundColor(iconColor)
-                                        Text(settings.getFormattedLocation())
-                                            .font(.system(size: 12, weight: .regular))
-                                            .foregroundColor(locationColor)
+                                // 文字和地点显示区域，居中对齐
+                                VStack(alignment: .center, spacing: 4) {
+                                    // 文字显示
+                                    Text(formatText(memoryText))
+                                        .font(.system(size: 15, weight: .medium))
+                                        .foregroundColor(textColor)
+                                        .multilineTextAlignment(.center)
+                                        .lineLimit(2)
+                                    
+                                    // 地点显示
+                                    if settings.showLocation {
+                                        HStack(spacing: 4) {
+                                            Image("map_s")
+                                                .renderingMode(.template)
+                                                .resizable()
+                                                .frame(width: 12, height: 12)
+                                                .foregroundColor(iconColor)
+                                            Text(settings.getFormattedLocation())
+                                                .font(.system(size: 12, weight: .regular))
+                                                .foregroundColor(locationColor)
+                                        }
                                     }
                                 }
+                                
+                                Spacer()
                             }
-                            .padding(.leading, horizontalMargin)
                             
-                            Spacer()
+                            // 时间显示 - 位于背景下边缘上方24点处
+                            if settings.showDate {
+                                VStack {
+                                    Spacer()
+                                    Text(settings.getFormattedDate())
+                                        .font(.custom("PixelMplus12-Regular", size: 18))
+                                        .foregroundColor(timeColor)
+                                        .padding(.bottom, 24)
+                                }
+                            }
                         }
-                        
-                        Spacer()
                     }
-                    .frame(height: bottomMargin)
                 }
             }
             .frame(width: frameWidth, height: frameHeight)
@@ -534,44 +499,10 @@ struct PhotoFrameViewSeven: View {
     }
 }
 
-// MARK: - SevenView Extension
-extension SevenView {
-    // 保存图片到相册
-    private func saveImageToPhotoLibrary() {
-        print("开始保存图片到相册流程")
-        
-        // 获取屏幕宽度
-        let currentScreenWidth = UIScreen.main.bounds.width
-        
-        // 使用ImageExporter保存图片（SevenView专用方法）
-        ImageExporter.savePhotoFrameSeven(
-            image: selectedImage,
-            screenWidth: currentScreenWidth,
-            imageScale: imageScale,
-            imageOffset: imageOffset,
-            memoryText: memoryText,
-            frameColorIndex: frameColorIndex,
-            textColorIndex: textColorIndex,
-            timeColorIndex: timeColorIndex,
-            locationColorIndex: locationColorIndex,
-            iconColorIndex: iconColorIndex
-        ) { success, message in
-            DispatchQueue.main.async {
-                self.saveMessage = message
-                self.showingSaveAlert = true
-                
-                if success {
-                    print("保存成功: \(message)")
-                } else {
-                    print("保存失败: \(message)")
-                }
-            }
-        }
-    }
-}
-
 #Preview {
-    if let image = UIImage(systemName: "photo") {
-        SevenView(selectedImage: image)
+    if let image = UIImage(named: "sample") {
+        TwelveView(selectedImage: image)
+    } else {
+        Text("No preview image available")
     }
 }

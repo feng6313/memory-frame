@@ -6,6 +6,10 @@
 	objectVersion = 77;
 	objects = {
 
+/* Begin PBXBuildFile section */
+		B23963FE2E03ABA30094EE2F /* PixelMplus12-Regular.ttf in Resources */ = {isa = PBXBuildFile; fileRef = B23963FD2E03ABA30094EE2F /* PixelMplus12-Regular.ttf */; };
+/* End PBXBuildFile section */
+
 /* Begin PBXContainerItemProxy section */
 		B29E40802DFC07E40075CB4F /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
@@ -24,6 +28,7 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		B23963FD2E03ABA30094EE2F /* PixelMplus12-Regular.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "PixelMplus12-Regular.ttf"; sourceTree = "<group>"; };
 		B29E406F2DFC07E30075CB4F /* memory frame.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "memory frame.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		B29E407F2DFC07E40075CB4F /* memory frameTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "memory frameTests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
 		B29E40892DFC07E40075CB4F /* memory frameUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "memory frameUITests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -75,6 +80,7 @@
 		B29E40662DFC07E30075CB4F = {
 			isa = PBXGroup;
 			children = (
+				B23963FD2E03ABA30094EE2F /* PixelMplus12-Regular.ttf */,
 				B29E40712DFC07E30075CB4F /* memory frame */,
 				B29E40822DFC07E40075CB4F /* memory frameTests */,
 				B29E408C2DFC07E40075CB4F /* memory frameUITests */,
@@ -212,6 +218,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				B23963FE2E03ABA30094EE2F /* PixelMplus12-Regular.ttf in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -399,6 +406,7 @@
 				DEVELOPMENT_TEAM = V947KG8XXG;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = "memory-frame-Info.plist";
 				INFOPLIST_KEY_CFBundleDisplayName = "记忆相框";
 				INFOPLIST_KEY_LSApplicationCategoryType = "";
 				INFOPLIST_KEY_NSPhotoLibraryAddUsageDescription = "此应用需要访问相册来保存您的照片";
@@ -434,6 +442,7 @@
 				DEVELOPMENT_TEAM = V947KG8XXG;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = "memory-frame-Info.plist";
 				INFOPLIST_KEY_CFBundleDisplayName = "记忆相框";
 				INFOPLIST_KEY_LSApplicationCategoryType = "";
 				INFOPLIST_KEY_NSPhotoLibraryAddUsageDescription = "此应用需要访问相册来保存您的照片";

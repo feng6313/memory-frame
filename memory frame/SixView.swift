@@ -400,7 +400,7 @@ struct PhotoFrameViewSix: View {
                     // 时间显示 - 位于边框高度-24点处
                     if settings.showDate {
                         Text(settings.getFormattedDate())
-                            .font(.system(size: 18, weight: .regular))
+                            .font(.custom("PixelMplus12-Regular", size: 18))
                             .foregroundColor(timeColor)
                             .position(x: frameWidth / 2, y: frameHeight - 24)
                     }

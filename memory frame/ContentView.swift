@@ -45,6 +45,10 @@ struct ContentView: View {
     @State private var showingSixView = false
     @State private var showingSevenView = false
     @State private var showingEightView = false
+    @State private var showingNineView = false
+    @State private var showingTenView = false
+    @State private var showingElevenView = false
+    @State private var showingTwelveView = false
     @State private var selectedItem: PhotosPickerItem?
     @State private var showingPhotoPicker = false
     @State private var selectedFrameIndex: Int = 0
@@ -65,7 +69,7 @@ struct ContentView: View {
                         GridItem(.flexible(), spacing: 24),
                         GridItem(.flexible(), spacing: 24)
                     ], spacing: 24) {
-                        ForEach(0..<8, id: \.self) { index in
+                        ForEach(0..<12, id: \.self) { index in
                             FrameItemView(
                                 index: index, 
                                 frameSize: calculateFrameSize(screenWidth: geometry.size.width)
@@ -119,6 +123,14 @@ struct ContentView: View {
                                     showingSevenView = true
                                 } else if selectedFrameIndex == 7 {
                                     showingEightView = true
+                                } else if selectedFrameIndex == 8 {
+                                    showingNineView = true
+                                } else if selectedFrameIndex == 9 {
+                                    showingTenView = true
+                                } else if selectedFrameIndex == 10 {
+                                    showingElevenView = true
+                                } else if selectedFrameIndex == 11 {
+                                    showingTwelveView = true
                                 } else {
                                     showingOneView = true // 其他索引默认进入OneView
                                 }
@@ -166,6 +178,26 @@ struct ContentView: View {
         .fullScreenCover(isPresented: $showingEightView) {
             if let image = selectedImage {
                 EightView(selectedImage: image)
+            }
+        }
+        .fullScreenCover(isPresented: $showingNineView) {
+            if let image = selectedImage {
+                NineView(selectedImage: image)
+            }
+        }
+        .fullScreenCover(isPresented: $showingTenView) {
+            if let image = selectedImage {
+                TenView(selectedImage: image)
+            }
+        }
+        .fullScreenCover(isPresented: $showingElevenView) {
+            if let image = selectedImage {
+                ElevenView(selectedImage: image)
+            }
+        }
+        .fullScreenCover(isPresented: $showingTwelveView) {
+            if let image = selectedImage {
+                TwelveView(selectedImage: image)
             }
         }
     }
@@ -228,6 +260,34 @@ struct FrameItemView: View {
                 }
         } else if index == 7 {
             Image("eight")
+                .resizable()
+                .frame(width: frameSize.width, height: frameSize.height)
+                .onTapGesture {
+                    onTap()
+                }
+        } else if index == 8 {
+            Image("nine")
+                .resizable()
+                .frame(width: frameSize.width, height: frameSize.height)
+                .onTapGesture {
+                    onTap()
+                }
+        } else if index == 9 {
+            Image("ten")
+                .resizable()
+                .frame(width: frameSize.width, height: frameSize.height)
+                .onTapGesture {
+                    onTap()
+                }
+        } else if index == 10 {
+            Image("eleven")
+                .resizable()
+                .frame(width: frameSize.width, height: frameSize.height)
+                .onTapGesture {
+                    onTap()
+                }
+        } else if index == 11 {
+            Image("twelve")
                 .resizable()
                 .frame(width: frameSize.width, height: frameSize.height)
                 .onTapGesture {

@@ -372,7 +372,7 @@ struct PhotoFrameViewTwo: View {
                                     HStack {
                                         Spacer()
                                         Text(settings.getFormattedDate())
-                                            .font(.system(size: 18, weight: .regular))
+                                            .font(.custom("PixelMplus12-Regular", size: 18))
                                             .foregroundColor(timeColor)
                                             .padding(.trailing, 12)
                                             .padding(.bottom, 12)
